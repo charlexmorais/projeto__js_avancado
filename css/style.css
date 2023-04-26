@@ -1,0 +1,68 @@
+
+body {
+  font-family: " Arial, sans-serif";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: white;
+}
+header h1 {
+  color: #2196f3;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* opcional, para centralizar verticalmente também */
+  margin-top: 3%;
+}
+footer{
+  font-size: 10px;
+}
+.logo{
+  cursor: pointer;
+}
+
+.vetor-config {
+  cursor: pointer;
+  width: 50px;
+  position: absolute;
+  right: 0;
+}
+
+.hidden{
+  display: none;
+}
+.link-icon{
+  cursor: pointer;
+}
+.gap-links{
+  width: 30px;
+  font-size: 30px;
+}
+.whats{
+  color: green;
+}
+
+@media (max-width: 400px) {
+ .input{
+  width: 240px;
+ }
+  h1{
+    font-size: 20px;
+  }
+ button{
+  background-color: aqua;
+ }
+ 
+}
+@media screen and (max-width: 470px) {
+   .btn-shorten{
+    
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    width: 120px !important;
+  }
+}
