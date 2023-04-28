@@ -16,11 +16,9 @@ header h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column; /* opcional, para centralizar verticalmente também */
-  margin-top: 3%;
+  margin-top: 1%;
 }
-footer{
-  font-size: 10px;
-}
+
 .logo{
   cursor: pointer;
 }

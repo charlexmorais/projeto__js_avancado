@@ -1,18 +1,6 @@
-// const domaInname = 707808;
-// const domainId = 884045;
+const domainName = localStorage.getItem('hostname')
+const domainId = localStorage.getItem('id')
+export const loadIng= document.getElementById("loading")
+export const buttonShorten=document.querySelector("#shorten")
 
-// export const savenumberdomaInname = JSON.parse(localStorage.getItem("savenumber"));
 
-// export const salve = savenumberdomaInname ?? [];
-
-// export const salveId = JSON.parse(localStorage.getItem("salveid"));
-
-// export const numberID = salveId ?? [];
-
-// export function atualizandoLocalstoragedomaInname() {
-//   localStorage.setItem("savenumber", JSON.stringify(savenumberdomaInname));
-  
-// }
-// export function atualizandoLocalstoragesalveId() {
-//   localStorage.setItem("salveid", JSON.stringify(salveId));
-// }
