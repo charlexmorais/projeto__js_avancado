@@ -1,20 +1,25 @@
+
+import { inputField } from "./constant.js"
 import { getDataDomain } from "./domainlist.mjs"
 import { postDataLink } from "./shortlink.mjs"
+import { checkValidation,  } from "./tools.js"
 
 
-
-
-
-
-
-
-const btnshorten=document.querySelector("#shorten")
+const buttonShortenLink=document.querySelector("#btn-shorten")
 getDataDomain()
-btnshorten.addEventListener("click",()=>postDataLink()) 
- 
- 
- // funcao pra dar alert sucesso e mostrar link no pagina
 
+
+buttonShortenLink.addEventListener("click",()=>postDataLink()) 
  
+inputField.addEventListener("input", checkValidation);
+
+const form = document.querySelector('#form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // evita o comportamento padrão do formulário
+  postDataLink();
+});
+
+
+
 
 

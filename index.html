@@ -28,22 +28,30 @@
 
         </div>
 
-
-        <div class="input-container">
-            <input id="input-field" class="input" type="url" placeholder="COLE A SUA URL">
-            <img class="link-icon hidden" src="assets/img/425758-icone-de-link-de-gratis-vetor.jpg" alt="vetor-link">
-        </div>
-
-        <button id="shorten"class="btn-shorten">ENCURTAR</button>
-
-        <div id="my-tbody" class="result">
-            <div id="loading" class="loading hidden">
-                <div colspan="2">Carregando...</div>
+        <form id="form">
+            <div class="input-container">
+                <input id="input-field" class="input" type="url" placeholder="COLE A SUA URL">
+                <img  id="icon-initial" class="link-icon hidden" src="assets/img/425758-icone-de-link-de-gratis-vetor.jpg"
+                    alt="vetor-link">
             </div>
-        </div>
 
 
-        <div class="result-shares  hidden">
+            <div class=button-container>
+                <!-- <button type ="button" id="shorten"class="btn-shorten">ENCURTAR</button> -->
+
+                <button type="button" id="btn-shorten" class="btn-shorten" disabled>ENCURTAR</button>
+
+
+            </div>
+
+            <div id="my-tbody" class="result-container">
+                <div id="loading" class="loading hidden">
+                    <div colspan="2">Carregando...</div>
+                </div>
+            </div>
+        </form>
+
+        <div id="result-shares" class="result-shares  hidden">
             <a href="https://wa.me/seu-numero-aqui"><i class="fa-brands fa-whatsapp gap-links whats"></i></a>
             <a href="https://www.linkedin.com/seu-perfil-aqui"><i
                     class=" ap-links fa-brands fa-linkedin gap-links"></i></a>
@@ -77,7 +85,11 @@
 
         </table>
     </section>
-    
+    <div class="footer-container">
+        <footer>
+            MACH1 - Copyright © 2023
+        </footer>
+    </div>
 
     <script src="js/modules/main.js" type="module"></script>
 

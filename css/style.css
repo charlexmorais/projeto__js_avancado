@@ -1,15 +1,25 @@
-
+html {
+  font-family: " Arial";
+}
 body {
-  font-family: " Arial, sans-serif";
+  font-family: " Arial";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
   background-color: white;
+
 }
 header h1 {
   color: #2196f3;
 }
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  margin-top:8%;
+}
+
 
 .container {
   display: flex;
@@ -19,7 +29,7 @@ header h1 {
   margin-top: 1%;
 }
 
-.logo{
+.logo {
   cursor: pointer;
 }
 
@@ -29,36 +39,39 @@ header h1 {
   position: absolute;
   right: 0;
 }
-
-.hidden{
+#loading{
+font-size: 18px;
+margin-top: 8%;
+background-color: bisque;
+border-radius: 4px;
+}
+.hidden {
   display: none;
 }
-.link-icon{
+.link-icon {
   cursor: pointer;
 }
-.gap-links{
+.gap-links {
   width: 30px;
   font-size: 30px;
 }
-.whats{
+.whats {
   color: green;
 }
 
 @media (max-width: 400px) {
- .input{
-  width: 240px;
- }
-  h1{
+  .input {
+    width: 240px;
+  }
+  h1 {
     font-size: 20px;
   }
- button{
-  background-color: aqua;
- }
- 
+  button {
+    background-color: aqua;
+  }
 }
 @media screen and (max-width: 470px) {
-   .btn-shorten{
-    
+  .btn-shorten {
     font-size: 12px !important;
     padding: 8px 12px !important;
     width: 120px !important;
