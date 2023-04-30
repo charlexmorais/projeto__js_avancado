@@ -1,10 +1,9 @@
 
-import { inputField } from "./constant.js"
+import { btncopying, inputField } from "./constant.js"
 import { getDataDomain } from "./domainlist.mjs"
 import { postDataLink } from "./shortlink.mjs"
-import { checkValidation,  } from "./tools.js"
-
-
+import { checkValidation, copyURL,  } from "./tools.js"
+copyURL
 const buttonShortenLink=document.querySelector("#btn-shorten")
 getDataDomain()
 
@@ -20,6 +19,6 @@ form.addEventListener('submit', function(event) {
 });
 
 
-
+btncopying.addEventListener('click', copyURL);
 
 

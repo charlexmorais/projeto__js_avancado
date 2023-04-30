@@ -10,3 +10,4 @@ export const btnActions =document.querySelector("#btn-actions",)
 
 export const btnActionsicon = document.querySelector('.btn-actions');
 export const btnShortenActions = document.querySelectorAll('.btn-shorten');
+export const btncopying=document.querySelector("#copy")
