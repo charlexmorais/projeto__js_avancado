@@ -2,8 +2,8 @@
 import { btncopying, inputField } from "./constant.js"
 import { getDataDomain } from "./domainlist.mjs"
 import { postDataLink } from "./shortlink.mjs"
-import { checkValidation, copyURL,  } from "./tools.js"
-copyURL
+import { checkValidation, copyURL } from "./tools.js"
+
 const buttonShortenLink=document.querySelector("#btn-shorten")
 getDataDomain()
 

@@ -56,4 +56,10 @@ export function menssage(tipo, mensagem) {
     }, 2000);
   }, 1000);
 }
-
+  // funciona 
+// export function copyInputValue() {
+//   var inputfield = document.getElementById("inputfield"); // get the input field by ID
+//   var inputValue = inputfield.value; // get the value of the input field
+//   navigator.clipboard.writeText(inputValue); // copy the input value to the user's clipboard
+//   message("success", "Valor copiado para a área de transferência!"); // display a success message to the user
+// }

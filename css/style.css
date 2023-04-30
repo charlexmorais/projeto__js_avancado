@@ -39,7 +39,7 @@ header h1 {
   position: absolute;
   right: 0;
 }
-#loading{
+#result-container{
 font-size: 18px;
 font-style: normal;
 margin-top: 8%;

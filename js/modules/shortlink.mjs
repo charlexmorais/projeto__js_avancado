@@ -29,7 +29,7 @@ export function postDataLink() {
       console.log(data);
       const shortURL = data.shortURL;
       const updatedAt = data.updatedAt;
-      const resultContainer = document.getElementById("loading");
+      const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: 23/04/2023 às 13:04:52: ${updatedAt}`;
       clearForm()
       statusInitial()
