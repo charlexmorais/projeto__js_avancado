@@ -1,4 +1,4 @@
-import { clearForm, statusChange, statusInitial } from "./tools.js";
+import { clearForm,  statusChange, statusInitial } from "./tools.js";
 
 export function postDataLink() {
   const urlInput = document.getElementById("input-field").value;
@@ -16,10 +16,9 @@ export function postDataLink() {
   };
 
   fetch("https://api.short.io/links", options)
-
     .then((response) => {
       if (response.ok && response.status === 200) {
-        statusChange()
+        statusChange();
         return response.json();
       } else {
         throw new Error("Falha ao consultar a API");
@@ -31,15 +30,24 @@ export function postDataLink() {
       const updatedAt = data.updatedAt;
       const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: 23/04/2023 às 13:04:52: ${updatedAt}`;
+      
+      const inputValue = shortURL;
+
       clearForm()
-      statusInitial()
+      statusInitial();
+     
     })
     
+
     .catch((error) => {
       if (error.response && error.response.status === 409) {
         console.error("Já existe um link com esse nome ou URL");
+        z;
       } else {
         console.error(error);
       }
     });
 }
+
+
+

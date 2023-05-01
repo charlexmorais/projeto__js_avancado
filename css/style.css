@@ -1,33 +1,52 @@
 html {
   font-family: " Arial";
 }
+
+html,
 body {
+  height: 20%;
+  margin: 0;
+  padding: 0;
   font-family: " Arial";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
   background-color: white;
-
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 header h1 {
   color: #2196f3;
 }
 
+.content {
+  flex: 1;
+ 
+}
+
 .footer-container {
   display: flex;
   justify-content: center;
-  margin-top:2%;
+  align-items: center;
+  color: black;
+  height: 50px;
+  margin-top: 8%;
 }
-
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column; /* opcional, para centralizar verticalmente também */
-  margin-top: 1%;
+  
 }
+
+
 
 .logo {
   cursor: pointer;
@@ -39,13 +58,12 @@ header h1 {
   position: absolute;
   right: 0;
 }
-#result-container{
-font-size: 18px;
-font-style: normal;
-margin-top: 8%;
-background-color:#f9f9f9;
-color:#f80;
-border : dashed 4px #d5d5d5 ;
+#result-container {
+  font-size: 18px;
+  font-style: normal;
+  background-color: #f9f9f9;
+  color: #f80;
+  margin-top: 2%;
 }
 .hidden {
   display: none;
@@ -62,15 +80,16 @@ border : dashed 4px #d5d5d5 ;
 }
 
 @media (max-width: 400px) {
-  html, body {
+  html,
+  body {
     overflow: hidden;
     height: 100%;
   }
-  
+
   .input {
     width: 240px;
     margin-bottom: 1%;
-    margin-left: 10%;
+    margin-left: 12%;
   }
   h1 {
     font-size: 20px;

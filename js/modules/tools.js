@@ -7,6 +7,7 @@ import {
   loadIng,
 } from "./constant.js";
 
+
 export function statusChange() {
   // alterando status de carregamento
   loadIng.classList.remove("hidden");
@@ -35,14 +36,9 @@ export function statusInitial() {
     button.classList.remove("hidden");
   });
 }
-export function copyURL() {
-  var url = window.location.href; // obtém a URL atual
-  navigator.clipboard.writeText(url); // copia a URL para a área de transferência
-  menssage("success","URL copiado para a área de transferência!"); // exibe uma mensagem de confirmação
-}
 
 
-export function menssage(tipo, mensagem) {
+ export function message(tipo, mensagem) {
   // argumentos tipo e mensagem
   const alertaMensagem = document.createElement("div");
   alertaMensagem.textContent = mensagem;
@@ -56,10 +52,26 @@ export function menssage(tipo, mensagem) {
     }, 2000);
   }, 1000);
 }
-  // funciona 
-// export function copyInputValue() {
-//   var inputfield = document.getElementById("inputfield"); // get the input field by ID
-//   var inputValue = inputfield.value; // get the value of the input field
-//   navigator.clipboard.writeText(inputValue); // copy the input value to the user's clipboard
-//   message("success", "Valor copiado para a área de transferência!"); // display a success message to the user
-// }
+export function copyToClipboard(short) {
+  navigator.clipboard.writeText(short).then(() => {
+    console.log(`Copiado: ${short}`);
+  }, (err) => {
+    console.error(`Falha na cópia: ${err}`);
+  });
+}
+
+export function copyShortURL() {
+  const resultContainer = document.getElementById("result-container");
+  const shortURL = document.getElementById("result-container").textContent.match(/(http|https):\/\/[^\s]+/)[0]; // extrai somente a URL encurtada da página
+  copyToClipboard(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
+}
+
+
+
+
+
+  
+  
+
+
+
