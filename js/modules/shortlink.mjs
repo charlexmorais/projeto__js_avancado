@@ -1,6 +1,7 @@
-import { clearForm,  statusChange, statusInitial } from "./tools.js";
+import { clearForm,  message,  statusChange, statusInitial } from "./tools.js";
 
-export function postDataLink() {
+export async function postDataLink() {
+ statusChange()
   const urlInput = document.getElementById("input-field").value;
   const options = {
     method: "POST",
@@ -18,22 +19,22 @@ export function postDataLink() {
   fetch("https://api.short.io/links", options)
     .then((response) => {
       if (response.ok && response.status === 200) {
-        statusChange();
+        message("success","URL foi encurtado com sucesso. Clique em Copiar ou CTRL + C para copiá-lo.")
         return response.json();
       } else {
+        message("error","Falha ao encurtar  a Url")
         throw new Error("Falha ao consultar a API");
+        
       }
     })
     .then((data) => {
-      console.log(data);
       const shortURL = data.shortURL;
-      const updatedAt = data.updatedAt;
+      const updatedAt = new Date(data.updatedAt);
+      const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
       const resultContainer = document.getElementById("result-container");
-      resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: 23/04/2023 às 13:04:52: ${updatedAt}`;
-      
-      const inputValue = shortURL;
-
-      clearForm()
+      resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
+      clearForm();
+    
       statusInitial();
      
     })

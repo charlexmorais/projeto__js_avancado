@@ -51,7 +51,15 @@ header h1 {
 .logo {
   cursor: pointer;
 }
-
+/* loading */
+.c-loader { 
+  animation: is-rotating 1s infinite;
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #51d4db;
+  height: 50px;
+  width: 50px;
+}
 .vetor-config {
   cursor: pointer;
   width: 50px;
@@ -79,18 +87,20 @@ header h1 {
   color: green;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   html,
   body {
     overflow: hidden;
     height: 100%;
   }
-
-  .input {
-    width: 240px;
-    margin-bottom: 1%;
-    margin-left: 12%;
+  .btn-shorten {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    width: 120px !important;
+    margin-left: 28%;
   }
+
+ 
   h1 {
     font-size: 20px;
   }
@@ -102,6 +112,24 @@ header h1 {
   .btn-shorten {
     font-size: 12px !important;
     padding: 8px 12px !important;
-    width: 120px !important;
+    width: 155px !important;
+  }
+  .input {
+    width: 300px;
+    margin-bottom: 1%;
+    margin-left: 12%;
+  }
+  
+}
+@media screen and (max-width: 370px) {
+  .btn-shorten {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    width: 110px !important;
+  }
+  .input {
+    width: 200px;
+    margin-bottom: 1%;
+    margin-left: 10%;
   }
 }
