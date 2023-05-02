@@ -72,6 +72,7 @@ header h1 {
   background-color: #f9f9f9;
   color: #f80;
   margin-top: 2%;
+  margin-left:2%;
 }
 .hidden {
   display: none;
@@ -83,10 +84,15 @@ header h1 {
   width: 30px;
   font-size: 30px;
 }
-.whats {
+#whats {
   color: green;
 }
-
+#linkedin{
+  color: blue;
+}
+#twitter{
+color: blue;
+}
 @media (max-width: 415px) {
   html,
   body {

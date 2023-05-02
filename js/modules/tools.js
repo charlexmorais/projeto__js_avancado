@@ -3,13 +3,15 @@ import {
   btnShorten,
   btnShortenActions,
   inputField,
+  inputWhastLink,
   linkInitial,
   loadIng,
+  shares,
   urlDiv,
 } from "./constant.js";
 
 export async function statusChange() {
-  // alterando status de carregamento
+  // status de carregamento
   loadIng.classList.remove("hidden");
 }
 
@@ -25,8 +27,7 @@ export function checkValidation() {
 export function clearForm() {
   inputField.value = "";
 }
-export function statusInitial() {
-  // alterando status de carregamento de botoes na pagina
+export function statusInitial() {// adicionando e removendo 
 
   linkInitial.classList.remove("hidden");
   // shares.classList.remove("hidden");
@@ -36,11 +37,11 @@ export function statusInitial() {
   });
 }
 
-export function message(tipo, mensagem) {
+export function message(tipo, mensagem) {// mensagens de erro e sucesso
   // argumentos tipo e mensagem
   const alertaMensagem = document.createElement("div");
   alertaMensagem.textContent = mensagem;
-  alertaMensagem.className = tipo; // atributo className em vez de classList
+  alertaMensagem.className = tipo; 
   document.body.appendChild(alertaMensagem); // adiciona elemento na pagina
   setTimeout(function () {
     // adicionado tempo e removendo
@@ -48,9 +49,9 @@ export function message(tipo, mensagem) {
     setTimeout(function () {
       document.body.removeChild(alertaMensagem);
     }, 2000);
-  }, 4000);
+  }, 3000);
 }
-export function copyToClipboard(short) {
+export function copyToClipboard(short) {  // copiando url 
   navigator.clipboard.writeText(short).then(
     () => {
       console.log(`Copiado: ${short}`);
@@ -62,6 +63,18 @@ export function copyToClipboard(short) {
     }
   );
 }
+export function copy(short) {  // copiando url 
+  navigator.clipboard.writeText(short).then(
+    () => {
+      console.log(`Copiado: ${short}`);
+      message("success", "compartilhe a sua url clicando nos icones");
+    },
+    (err) => {
+      console.error(`Falha na cópia: ${err}`);
+      message("error", "erro ao compartilhar ");
+    }
+  );
+}
 
 export function copyShortURL() {
   const resultContainer = document.getElementById("result-container");
@@ -69,7 +82,7 @@ export function copyShortURL() {
     .getElementById("result-container")
     .textContent.match(/(http|https):\/\/[^\s]+/)[0]
     .replace("Link", ""); // extrai somente a URL encurtada da página
-  copyToClipboard(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
+  copy(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
 }
 export function pageInitial(){
   loadIng.classList.add("hidden");
@@ -83,4 +96,17 @@ export function pageInitial(){
   btnShorten.classList.remove("hidden");
   location.reload();
 }
+export function sharing(){
+  copyShortURL()
+  shares.classList.remove("hidden");
+}
+
+export function openlinkinBrowser(shortURL) {
+   
+ 
+  window.open(shortURL, "_blank");
+  
+}
+
+
 

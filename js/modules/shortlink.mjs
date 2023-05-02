@@ -1,7 +1,7 @@
 import { clearForm,  message,  statusChange, statusInitial } from "./tools.js";
 
 export async function postDataLink() {
- statusChange()
+ statusChange() // mostrando status de carregamento 
   const urlInput = document.getElementById("input-field").value;
   const options = {
     method: "POST",
@@ -29,13 +29,13 @@ export async function postDataLink() {
     })
     .then((data) => {
       const shortURL = data.shortURL;
-      const updatedAt = new Date(data.updatedAt);
+      const updatedAt = new Date(data.updatedAt); // data atual 
       const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
       const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
-      clearForm();
+      clearForm();// limpando formulario
     
-      statusInitial();
+      statusInitial();// mostrar botoes e divs com url 
      
     })
     

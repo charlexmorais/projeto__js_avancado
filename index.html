@@ -31,10 +31,10 @@
         <form id="form">
             <div class="input-container">
                 <input id="input-field" class="input" type="text" placeholder="COLE A SUA URL">
-                <img  id="icon-initial" class="link-icon hidden" src="assets/img/425758-icone-de-link-de-gratis-vetor.jpg"
-                    alt="vetor-link">
+                <img id="icon-initial" class="link-icon hidden"
+                    src="assets/img/425758-icone-de-link-de-gratis-vetor.jpg" alt="vetor-link">
             </div>
-                
+
 
             <div class=button-container>
                 <!-- <button type ="button" id="shorten"class="btn-shorten">ENCURTAR</button> -->
@@ -52,16 +52,27 @@
         </form>
 
         <div id="result-shares" class="result-shares  hidden">
-            <a href="https://wa.me/seu-numero-aqui"><i class="fa-brands fa-whatsapp gap-links whats"></i></a>
-            <a href="https://www.linkedin.com/seu-perfil-aqui"><i
+            <a id="whats"><i class="fa-brands fa-whatsapp gap-links whats"></i></a>
+
+
+
+            <a id="linkedin" href="https://www.linkedin.com/" target="_blank"><i
                     class=" ap-links fa-brands fa-linkedin gap-links"></i></a>
-            <a href="https://twitter.com/seu-perfil-aqui"><i class="ap-links fa-brands fa-twitter gap-links"></i></a>
+
+            <a id="twitter" href="https://twitter.com/" target="_blank"><i
+                    class="ap-links fa-brands fa-twitter gap-links"></i></a>
+
+        </div>
+        <div class="input-whats">
+          <input  class="sharing-input hidden" id="field-whats" type="text" placeholder="Digite o número que deseja compartilhar">
+          <button class="sharing-input hidden fa-solid fa-share-from-square"id="btn-shipping"></button>
+          
         </div>
 
 
         <div class="btn-actions ">
             <button id="copy" class="btn-shorten actions hidden"><i class="fa-regular fa-copy"></i>COPIAR</button>
-            <button class="btn-shorten actions hidden"><i
+            <button id="sharing" class="btn-shorten actions hidden"><i
                     class="fa-solid fa-share-from-square"></i>COMPARTILHAR</button>
             <button class="btn-shorten actions hidden"><i class="fa-solid fa-qrcode"></i>QR CODE</button>
         </div>

@@ -21,4 +21,23 @@
     width: 25px;
     margin-left: 4px;
   }
+  .input-whats {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-whats input {
+    width: 300px;
+    height: 14px;
+    flex: 1;
+  }
+  
+  .input-whats button {
+    background-color:rgb(56, 218, 56);
+    width: 50px;
+    height: 19px;
+    margin-left: 10px;
+    cursor: pointer;
+    
+  }
   
