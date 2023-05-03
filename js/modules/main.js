@@ -1,8 +1,10 @@
-import {  btnSharing, btncopying, btnshipping, homePage, inputField, linkedinLink,sharingInput, twitterLink, whatsAppBtn, whatsLink } from "./constant.js";
+import {  backPage, btnSharing, btnValidacao, btncopying, homePage, inputField, linkedinLink,twitterLink, whatsAppBtn, whatsLink } from "./constant.js";
 import { getDataDomain } from "./domainlist.mjs";
 import { postDataLink } from "./shortlink.mjs";
-import { checkValidation,  copyShortURL,  openlinkinBrowser,  pageInitial, sharing, } from "./tools.js";
+import { checkValidation,    copyShortURL,   message,     pageInitial, sendToWhats, share, showWhatsAppInput,  } from "./tools.js";
 
+
+backPage.addEventListener("click",pageInitial)
 const buttonShortenLink = document.querySelector("#btn-shorten");
 getDataDomain();
 
@@ -11,14 +13,16 @@ buttonShortenLink.addEventListener("click", () => postDataLink());
 inputField.addEventListener("input", checkValidation);
 
 const form = document.querySelector("#form");
+
 form.addEventListener("submit", function (event) {
   event.preventDefault(); 
   postDataLink();
 });
 
+
 btncopying.addEventListener("click", copyShortURL);
 homePage.addEventListener("click",pageInitial)
-btnSharing.addEventListener("click",sharing)
+btnSharing.addEventListener("click",share)
 
 
 whatsLink.addEventListener("click", function() {
@@ -28,26 +32,28 @@ whatsLink.addEventListener("click", function() {
 });
 
 linkedinLink.addEventListener("click", function() {
-  
-  openlinkinBrowser("https://www.linkedin.com/");
+  const linkedin = "https://www.linkedin.com/";
+  const newWindow = window.open(linkedin, "_blank");
+  if (newWindow) {
+    message("success", "Link aberto com sucesso no LinkedIn!");
+  } else {
+    message("error", "Erro ao abrir o link no LinkedIn");
+  }
 });
 
 twitterLink.addEventListener("click", function() {
-  openlinkinBrowser("https://twitter.com/");
+  const twitter ="https://twitter.com/";
+  const newOpen =window.open(twitter ,"_blank");
+  if (newOpen) {
+    message("success", "Link aberto com sucesso no twitter!");
+  } else {
+    message("error", "Erro ao abrir o link no LinkedIn");
+  }
+  
 });
 
-whatsAppBtn.addEventListener('click', function() {
-  sharingInput.classList.toggle('hidden');
-btnshipping.classList.toggle("hidden");
-});
+whatsAppBtn.addEventListener('click',showWhatsAppInput)
+btnValidacao.addEventListener("click",sendToWhats)
 
 
-const buttonShipping = document.getElementById("btn-shipping");
-buttonShipping.addEventListener("click", function() {
-  const url = "https://web.whatsapp.com/";
-  const link = document.createElement("a");
-  link.href = url;
-  link.target = "_blank";
-  link.click();
-});
-
+      

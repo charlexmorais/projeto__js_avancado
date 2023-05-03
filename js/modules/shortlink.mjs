@@ -1,4 +1,4 @@
-import { clearForm,  message,  statusChange, statusInitial } from "./tools.js";
+import { clearForm,  message,  showButtons,  statusChange, } from "./tools.js";
 
 export async function postDataLink() {
  statusChange() // mostrando status de carregamento 
@@ -35,7 +35,7 @@ export async function postDataLink() {
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
       clearForm();// limpando formulario
     
-      statusInitial();// mostrar botoes e divs com url 
+      showButtons()
      
     })
     

@@ -1,13 +1,13 @@
 import {
-  btnActionsicon,
+  btnActions,
   btnShorten,
-  btnShortenActions,
   inputField,
-  inputWhastLink,
   linkInitial,
   loadIng,
-  shares,
-  urlDiv,
+  resultScreen,
+  resultShares,
+ 
+  
 } from "./constant.js";
 
 export async function statusChange() {
@@ -27,21 +27,23 @@ export function checkValidation() {
 export function clearForm() {
   inputField.value = "";
 }
-export function statusInitial() {// adicionando e removendo 
 
-  linkInitial.classList.remove("hidden");
-  // shares.classList.remove("hidden");
-  btnActionsicon.classList.remove("hidden");
-  btnShortenActions.forEach((button) => {
+export function showButtons() {
+  const buttons = document.querySelectorAll(".btn-shorten");
+  linkInitial.classList.remove("hidden")
+  buttons.forEach((button) => {
     button.classList.remove("hidden");
   });
 }
 
-export function message(tipo, mensagem) {// mensagens de erro e sucesso
+
+
+export function message(tipo, mensagem) {
+  // mensagens de erro e sucesso
   // argumentos tipo e mensagem
   const alertaMensagem = document.createElement("div");
   alertaMensagem.textContent = mensagem;
-  alertaMensagem.className = tipo; 
+  alertaMensagem.className = tipo;
   document.body.appendChild(alertaMensagem); // adiciona elemento na pagina
   setTimeout(function () {
     // adicionado tempo e removendo
@@ -51,7 +53,8 @@ export function message(tipo, mensagem) {// mensagens de erro e sucesso
     }, 2000);
   }, 3000);
 }
-export function copyToClipboard(short) {  // copiando url 
+export function copyToClipboard(short) {
+  // copiando url
   navigator.clipboard.writeText(short).then(
     () => {
       console.log(`Copiado: ${short}`);
@@ -62,8 +65,10 @@ export function copyToClipboard(short) {  // copiando url
       message("error", "Falha na cópia");
     }
   );
+ 
 }
-export function copy(short) {  // copiando url 
+export function copy(short) {
+  // copiando url
   navigator.clipboard.writeText(short).then(
     () => {
       console.log(`Copiado: ${short}`);
@@ -74,7 +79,10 @@ export function copy(short) {  // copiando url
       message("error", "erro ao compartilhar ");
     }
   );
+  
 }
+
+
 
 export function copyShortURL() {
   const resultContainer = document.getElementById("result-container");
@@ -82,31 +90,62 @@ export function copyShortURL() {
     .getElementById("result-container")
     .textContent.match(/(http|https):\/\/[^\s]+/)[0]
     .replace("Link", ""); // extrai somente a URL encurtada da página
-  copy(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
+  copyToClipboard(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
 }
-export function pageInitial(){
+export function pageInitial() {
   loadIng.classList.add("hidden");
   linkInitial.classList.add("hidden");
-  urlDiv.classList.toggle("hidden"); // utiliza toggle() para alternar a classe hidden
-  // shares.classList.add("hidden");
-  btnActionsicon.classList.add("hidden");
-  btnShortenActions.forEach((button) => {
-    button.classList.add("hidden");
-  });
+  resultScreen.classList.toggle("hidden");
+  btnActions.classList.add("hidden");
+
+  if (Array.isArray(btnActions)) {
+    btnActions.forEach((button) => {
+      button.classList.add("hidden");
+    });
+  } else {
+    btnActions.classList.add("hidden");
+  }
+
   btnShorten.classList.remove("hidden");
   location.reload();
 }
-export function sharing(){
-  copyShortURL()
-  shares.classList.remove("hidden");
-}
 
-export function openlinkinBrowser(shortURL) {
-   
- 
-  window.open(shortURL, "_blank");
+export function showShareIcons() {
+
+  resultShares.classList.remove("hidden");
   
 }
 
+export function share() {
+  showShareIcons()
+  const resultContainer = document.getElementById("result-container");
+  const shortURL = resultContainer.textContent
+    .match(/(http|https):\/\/[^\s]+/)[0]
+    .replace("Link", "");
+  copy(shortURL);
+  
+}
 
+export function openlinkinBrowser(shortURL) {
+  window.open(shortURL, "_blank");
+}
+export function showWhatsAppInput() {
+  const inputWhatsApp = document.querySelector(".input-whats");
+  inputWhatsApp.classList.remove("hidden");
+  const sharingInput = inputWhatsApp.querySelector(".sharing-input");
+  sharingInput.classList.remove("hidden");
+  const btnShipping = inputWhatsApp.querySelector("#btn-shipping");
+  btnShipping.classList.remove("hidden");
+}
 
+export function sendToWhats() {
+  const phone = document.getElementById("phone").value;
+  if (phone === "") {
+      message("error", "Campo de telefone vazio");
+  } else {
+      const url = "https://api.whatsapp.com/send?phone=" + phone;
+      window.open(url, "_blank");
+      document.getElementById("phone").value = "";
+      message("success", "Compartilhado no WhatsApp com sucesso");
+  }
+}

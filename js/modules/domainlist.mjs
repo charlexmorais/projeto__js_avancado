@@ -17,6 +17,7 @@ export function getDataDomain() {
         }
       })
       .then((data) => {
+      
         console.log(data);
         localStorage.setItem("id", data[0].id);
         localStorage.setItem("hostname", data[0].hostname);

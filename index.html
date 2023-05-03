@@ -24,7 +24,7 @@
         </header>
 
         <div class="logo">
-            <img src="assets/img/240_F_104549801_iKIOglqvjr0GzHSpVZSm5dPcwSVvHNdq.jpg" alt="logo">
+            <img id="back-page" src="assets/img/240_F_104549801_iKIOglqvjr0GzHSpVZSm5dPcwSVvHNdq.jpg" alt="logo">
 
         </div>
 
@@ -52,25 +52,28 @@
         </form>
 
         <div id="result-shares" class="result-shares  hidden">
-            <a id="whats"><i class="fa-brands fa-whatsapp gap-links whats"></i></a>
+            <a id="whats"><i class="fa-brands fa-whatsapp gap-links whats link-icon"></i></a>
 
 
 
             <a id="linkedin" href="https://www.linkedin.com/" target="_blank"><i
-                    class=" ap-links fa-brands fa-linkedin gap-links"></i></a>
+                    class=" ap-links fa-brands fa-linkedin gap-links link-icon"></i></a>
 
             <a id="twitter" href="https://twitter.com/" target="_blank"><i
-                    class="ap-links fa-brands fa-twitter gap-links"></i></a>
+                    class="ap-links fa-brands fa-twitter gap-links link-icon"></i></a>
 
         </div>
         <div class="input-whats">
-          <input  class="sharing-input hidden" id="field-whats" type="text" placeholder="Digite o número que deseja compartilhar">
-          <button class="sharing-input hidden fa-solid fa-share-from-square"id="btn-shipping"></button>
-          
+            <input type="tel" id="phone" class="sharing-input  hidden" id="field-whats" type="text"
+                placeholder="Digite o número que deseja compartilhar">
+            <button class="sharing-input hidden fa-solid fa-share-from-square"
+                id="btn-shipping"></button>
+
+
         </div>
 
 
-        <div class="btn-actions ">
+        <div class="btn-actions">
             <button id="copy" class="btn-shorten actions hidden"><i class="fa-regular fa-copy"></i>COPIAR</button>
             <button id="sharing" class="btn-shorten actions hidden"><i
                     class="fa-solid fa-share-from-square"></i>COMPARTILHAR</button>
@@ -103,6 +106,9 @@
     </div>
 
     <script src="js/modules/main.js" type="module"></script>
+
+
+    
 
 </body>
 
