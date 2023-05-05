@@ -6,9 +6,10 @@ import {
   loadIng,
   resultScreen,
   resultShares,
- 
+  shareButtons,
   
 } from "./constant.js";
+import { postDataLink } from "./shortlink.mjs";
 
 export async function statusChange() {
   // status de carregamento
@@ -16,7 +17,7 @@ export async function statusChange() {
 }
 
 export function checkValidation() {
-  // desbilitando botao , quando nao tem valor no input
+  // desbilitando botao encurtar  , quando nao tem valor no input
   if (inputField.value === "") {
     btnShorten.disabled = true;
   } else {
@@ -29,16 +30,16 @@ export function clearForm() {
 }
 
 export function showButtons() {
+  // mostrando botoes na tela e icone inicial
   const buttons = document.querySelectorAll(".btn-shorten");
-  linkInitial.classList.remove("hidden")
+  linkInitial.classList.remove("hidden");
   buttons.forEach((button) => {
     button.classList.remove("hidden");
   });
 }
 
-
-
 export function message(tipo, mensagem) {
+  //  funca pra retorno de mensagem
   // mensagens de erro e sucesso
   // argumentos tipo e mensagem
   const alertaMensagem = document.createElement("div");
@@ -54,7 +55,8 @@ export function message(tipo, mensagem) {
   }, 3000);
 }
 export function copyToClipboard(short) {
-  // copiando url
+  // copiando url para area de transferencia
+
   navigator.clipboard.writeText(short).then(
     () => {
       console.log(`Copiado: ${short}`);
@@ -65,10 +67,10 @@ export function copyToClipboard(short) {
       message("error", "Falha na cópia");
     }
   );
- 
 }
 export function copy(short) {
-  // copiando url
+  // funcionalidade para o botao compartilhar
+
   navigator.clipboard.writeText(short).then(
     () => {
       console.log(`Copiado: ${short}`);
@@ -79,24 +81,14 @@ export function copy(short) {
       message("error", "erro ao compartilhar ");
     }
   );
-  
 }
 
-
-
-export function copyShortURL() {
-  const resultContainer = document.getElementById("result-container");
-  const shortURL = document
-    .getElementById("result-container")
-    .textContent.match(/(http|https):\/\/[^\s]+/)[0]
-    .replace("Link", ""); // extrai somente a URL encurtada da página
-  copyToClipboard(shortURL); // chama a função copyToClipboard() para copiar a URL encurtada para a área de transferência
-}
 export function pageInitial() {
-  loadIng.classList.add("hidden");
-  linkInitial.classList.add("hidden");
-  resultScreen.classList.toggle("hidden");
-  btnActions.classList.add("hidden");
+  // voltando a tela inicial
+  loadIng.classList.add("hidden"); // ocultando div div
+  linkInitial.classList.add("hidden"); // ocultando icone
+  resultScreen.classList.toggle("hidden"); // ocultando url e data
+  btnActions.classList.add("hidden"); // ocultando botoes de acoes
 
   if (Array.isArray(btnActions)) {
     btnActions.forEach((button) => {
@@ -107,29 +99,29 @@ export function pageInitial() {
   }
 
   btnShorten.classList.remove("hidden");
-  location.reload();
+  hiddenQrcode()
+  
+}
+export function showingqrcode() {
+  // mostrando qr code na tela
+  resultShares.classList.add("hidden")
+  const buttons = document.querySelectorAll(".btn-shorten");
+  buttons.forEach((button) => {
+    button.classList.add("hidden");
+  });
 }
 
 export function showShareIcons() {
-
+  // mostrando icones whats ,linkedin , twitter
   resultShares.classList.remove("hidden");
-  
-}
-
-export function share() {
-  showShareIcons()
-  const resultContainer = document.getElementById("result-container");
-  const shortURL = resultContainer.textContent
-    .match(/(http|https):\/\/[^\s]+/)[0]
-    .replace("Link", "");
-  copy(shortURL);
-  
 }
 
 export function openlinkinBrowser(shortURL) {
+  // abre navegador
   window.open(shortURL, "_blank");
 }
 export function showWhatsAppInput() {
+  // abrindo campo de preenchimento de contato no whatsApp
   const inputWhatsApp = document.querySelector(".input-whats");
   inputWhatsApp.classList.remove("hidden");
   const sharingInput = inputWhatsApp.querySelector(".sharing-input");
@@ -137,15 +129,106 @@ export function showWhatsAppInput() {
   const btnShipping = inputWhatsApp.querySelector("#btn-shipping");
   btnShipping.classList.remove("hidden");
 }
+export function copyShortURL() {
+  // pegando valor url
+  const resultContainer = document.getElementById("result-container");
+  const shortURL = document
+    .getElementById("result-container")
+    .textContent.match(/(http|https):\/\/[^\s]+/)[0]
+    .replace("Link", ""); // extrai somente a URL encurtada da página
+  return shortURL; // retorna a URL encurtada
+  
+}
 
-export function sendToWhats() {
-  const phone = document.getElementById("phone").value;
-  if (phone === "") {
-      message("error", "Campo de telefone vazio");
+export function share() {
+  // compartilhando o link encurtado no whatsApp
+  const phoneNumber = document.getElementById("phone").value;
+
+  const resultContainer = document.getElementById("result-container");
+  const shortURL = resultContainer.textContent
+    .match(/(http|https):\/\/[^\s]+/)[0]
+    .replace("Link", "");
+  const whatsappUrl =
+    "https://api.whatsapp.com/send?phone=" +
+    encodeURIComponent(phoneNumber) +
+    "&text=" +
+    encodeURIComponent(shortURL);
+  window.open(whatsappUrl, "_blank");
+  if (whatsappUrl) {
+    message("success", "Conteúdo compartilhado com sucesso!");
   } else {
-      const url = "https://api.whatsapp.com/send?phone=" + phone;
-      window.open(url, "_blank");
-      document.getElementById("phone").value = "";
-      message("success", "Compartilhado no WhatsApp com sucesso");
+    message(
+      "error",
+      "Não foi possível compartilhar o conteúdo. Verifique se o bloqueador de pop-ups está desativado."
+    );
+  }
+}
+
+export function shareLinkedIn(url) {
+  // compartilhando  no linkedin
+  var url = copyShortURL(url);
+  var title = "Título da página a ser compartilhada";
+  var summary = "Descrição da página a ser compartilhada";
+  var source = "Nome do site ou empresa";
+  var description = "Descrição do conteúdo compartilhado";
+
+  var shareWindow = window.open(
+    "https://www.linkedin.com/shareArticle?mini=true&url=" +
+      encodeURIComponent(url) +
+      "&title=" +
+      encodeURIComponent(title) +
+      "&summary=" +
+      encodeURIComponent(summary) +
+      "&source=" +
+      encodeURIComponent(source) +
+      "&description=" +
+      encodeURIComponent(description)
+  );
+
+  if (shareWindow) {
+    message("success", "Conteúdo compartilhado com sucesso!");
+  } else {
+    message(
+      "error",
+      "Não foi possível compartilhar o conteúdo. Verifique se o bloqueador de pop-ups está desativado."
+    );
+  }
+}
+
+export function shareTwitter(url) {
+  var url = copyShortURL(url); // obtém a URL encurtada gerada pela função copyShortURL()
+  var text = "Texto do tweet";
+  var hashtags = "hashtag1,hashtag2";
+  var via = "nome_do_usuário";
+
+  // Abra a janela de compartilhamento do Twitter
+  window.open(
+    "https://twitter.com/share?url=" +
+      encodeURIComponent(url) +
+      "&text=" +
+      encodeURIComponent(text) +
+      "&hashtags=" +
+      encodeURIComponent(hashtags) +
+      "&via=" +
+      encodeURIComponent(via)
+  );
+  if (window) {
+    message("success", "Conteúdo compartilhado com sucesso!");
+  } else {
+    message(
+      "error",
+      "Não foi possível compartilhar o conteúdo. Verifique se o bloqueador de pop-ups está desativado."
+    );
+  }
+}
+
+
+export function hiddenQrcode() {
+  
+  const qrCodeContainer = document.getElementById("your-container");
+  if (qrCodeContainer) {
+    qrCodeContainer.classList.remove("hidden");
+    resultScreen.classList.remove("hidden")
+    resultShares.classList.add("hidden")
   }
 }

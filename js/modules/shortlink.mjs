@@ -21,6 +21,7 @@ export async function postDataLink() {
       if (response.ok && response.status === 200) {
         message("success","URL foi encurtado com sucesso. Clique em Copiar ou CTRL + C para copiá-lo.")
         return response.json();
+        
       } else {
         message("error","Falha ao encurtar  a Url")
         throw new Error("Falha ao consultar a API");
@@ -28,6 +29,8 @@ export async function postDataLink() {
       }
     })
     .then((data) => {
+      console.log(data
+        )
       const shortURL = data.shortURL;
       const updatedAt = new Date(data.updatedAt); // data atual 
       const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
@@ -35,7 +38,7 @@ export async function postDataLink() {
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
       clearForm();// limpando formulario
     
-      showButtons()
+      showButtons()// mostrando botoes na tela e icone inicial
      
     })
     

@@ -93,6 +93,15 @@ header h1 {
 #twitter{
 color: blue;
 }
+#your-container a{
+  display: flex;
+  justify-content: center;
+  
+  
+
+}
+
+
 @media (max-width: 415px) {
   html,
   body {

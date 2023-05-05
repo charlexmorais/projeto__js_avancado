@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/input.css">
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/tabela.css">
+    
+    
 </head>
 
 <body>
@@ -30,7 +32,7 @@
 
         <form id="form">
             <div class="input-container">
-                <input id="input-field" class="input" type="text" placeholder="COLE A SUA URL">
+                <input id="input-field" class="input" type="url" placeholder="COLE A SUA URL">
                 <img id="icon-initial" class="link-icon hidden"
                     src="assets/img/425758-icone-de-link-de-gratis-vetor.jpg" alt="vetor-link">
             </div>
@@ -50,11 +52,13 @@
                 </div>
             </div>
         </form>
+        <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: pt_BR</script>
+
+
 
         <div id="result-shares" class="result-shares  hidden">
+
             <a id="whats"><i class="fa-brands fa-whatsapp gap-links whats link-icon"></i></a>
-
-
 
             <a id="linkedin" href="https://www.linkedin.com/" target="_blank"><i
                     class=" ap-links fa-brands fa-linkedin gap-links link-icon"></i></a>
@@ -66,8 +70,7 @@
         <div class="input-whats">
             <input type="tel" id="phone" class="sharing-input  hidden" id="field-whats" type="text"
                 placeholder="Digite o número que deseja compartilhar">
-            <button class="sharing-input hidden fa-solid fa-share-from-square"
-                id="btn-shipping"></button>
+            <button class="sharing-input hidden fa-solid fa-share-from-square" id="btn-shipping"></button>
 
 
         </div>
@@ -77,9 +80,14 @@
             <button id="copy" class="btn-shorten actions hidden"><i class="fa-regular fa-copy"></i>COPIAR</button>
             <button id="sharing" class="btn-shorten actions hidden"><i
                     class="fa-solid fa-share-from-square"></i>COMPARTILHAR</button>
-            <button class="btn-shorten actions hidden"><i class="fa-solid fa-qrcode"></i>QR CODE</button>
+            <button id="btn-qrcode" class="btn-shorten actions hidden"><i class="fa-solid fa-qrcode"></i>QR
+                CODE</button>
         </div>
-
+        <div id="your-container">
+            <!-- seu QR code aqui -->
+            <span id="salvarpng" href="#"></span>
+        </div>
+            
     </section>
     <section class="link table hidden">
         <h1>Gerenciar Links </h1>
@@ -106,9 +114,6 @@
     </div>
 
     <script src="js/modules/main.js" type="module"></script>
-
-
-    
 
 </body>
 

@@ -1,11 +1,15 @@
-import {  backPage, btnSharing, btnValidacao, btncopying, homePage, inputField, linkedinLink,twitterLink, whatsAppBtn, whatsLink } from "./constant.js";
+
+import {  backPage, btnQrcode, btnSharing, btnValidacao, btncopying,inputField, linkInitial, linkedinLink,twitterLink, whatsAppBtn, whatsLink } from "./constant.js";
 import { getDataDomain } from "./domainlist.mjs";
+import { postQrcode } from "./qrcode.mjs";
 import { postDataLink } from "./shortlink.mjs";
-import { checkValidation,    copyShortURL,   message,     pageInitial, sendToWhats, share, showWhatsAppInput,  } from "./tools.js";
+import { checkValidation,  copyShortURL,  copyToClipboard,  pageInitial, share,shareLinkedIn,shareTwitter,showShareIcons, showWhatsAppInput, showingqrcode,  } from "./tools.js";
 
 
-backPage.addEventListener("click",pageInitial)
+backPage.addEventListener("click",pageInitial) // voltando a pagina inicial
+
 const buttonShortenLink = document.querySelector("#btn-shorten");
+
 getDataDomain();
 
 buttonShortenLink.addEventListener("click", () => postDataLink());
@@ -18,11 +22,18 @@ form.addEventListener("submit", function (event) {
   event.preventDefault(); 
   postDataLink();
 });
+// define the copyShortURL() and copyToClipboard() functions here
+
+// add a click event listener to the copy button
+
+btncopying.addEventListener("click", () => {
+  const shortURL = copyShortURL(); // get the short URL
+  copyToClipboard(shortURL); // copy the short URL to clipboard
+});
 
 
-btncopying.addEventListener("click", copyShortURL);
-homePage.addEventListener("click",pageInitial)
-btnSharing.addEventListener("click",share)
+linkInitial.addEventListener("click",pageInitial) // // referente ao icone de inicio de tela
+btnSharing.addEventListener("click",showShareIcons,share) // botao compartilhar
 
 
 whatsLink.addEventListener("click", function() {
@@ -32,28 +43,21 @@ whatsLink.addEventListener("click", function() {
 });
 
 linkedinLink.addEventListener("click", function() {
-  const linkedin = "https://www.linkedin.com/";
-  const newWindow = window.open(linkedin, "_blank");
-  if (newWindow) {
-    message("success", "Link aberto com sucesso no LinkedIn!");
-  } else {
-    message("error", "Erro ao abrir o link no LinkedIn");
-  }
-});
+shareLinkedIn()
+
+})
 
 twitterLink.addEventListener("click", function() {
-  const twitter ="https://twitter.com/";
-  const newOpen =window.open(twitter ,"_blank");
-  if (newOpen) {
-    message("success", "Link aberto com sucesso no twitter!");
-  } else {
-    message("error", "Erro ao abrir o link no LinkedIn");
-  }
+ shareTwitter()
   
 });
 
-whatsAppBtn.addEventListener('click',showWhatsAppInput)
-btnValidacao.addEventListener("click",sendToWhats)
+whatsAppBtn.addEventListener('click',showWhatsAppInput) // abrindo input de prenchimento 
 
+btnValidacao.addEventListener("click",share)// botao de envio  de contato whatsApp
 
-      
+btnQrcode.addEventListener('click', () => {
+  postQrcode();
+  showingqrcode();
+});
+
