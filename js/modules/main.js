@@ -1,25 +1,44 @@
-
-import {  backPage, btnQrcode, btnSharing, btnValidacao, btncopying,inputField, linkInitial, linkedinLink,twitterLink, whatsAppBtn, whatsLink } from "./constant.js";
+import { copyToClipboard } from "../../copyclipboard.js";
+import {
+  backPage,
+  btnQrcode,
+  btnSharing,
+  btnValidacao,
+  btncopying,
+  inputField,
+  linkInitial,
+  linkedinLink,
+  twitterLink,
+  whatsAppBtn,
+  whatsLink,
+} from "./constant.js";
 import { getDataDomain } from "./domainlist.mjs";
 import { postQrcode } from "./qrcode.mjs";
+import { pageInitial, showShareIcons, showingqrcode } from "./screenchange.js";
+import { copyShortURL, share, shareLinkedIn, shareTwitter, showWhatsAppInput } from "./shareurl.js";
 import { postDataLink } from "./shortlink.mjs";
-import { checkValidation,  copyShortURL,  copyToClipboard,  pageInitial, share,shareLinkedIn,shareTwitter,showShareIcons, showWhatsAppInput, showingqrcode,  } from "./tools.js";
+import {
+  checkValidation,
+} from "./validation.js";
 
 
-backPage.addEventListener("click",pageInitial) // voltando a pagina inicial
+backPage.addEventListener("click", pageInitial); // voltando a pagina inicial
 
 const buttonShortenLink = document.querySelector("#btn-shorten");
 
-getDataDomain();
+getDataDomain();//obter domínio de dados 
 
 buttonShortenLink.addEventListener("click", () => postDataLink());
 
-inputField.addEventListener("input", checkValidation);
+inputField.addEventListener("input", ()=>{
+checkValidation()
+
+} );
 
 const form = document.querySelector("#form");
 
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); 
+  event.preventDefault();
   postDataLink();
 });
 // define the copyShortURL() and copyToClipboard() functions here
@@ -31,33 +50,26 @@ btncopying.addEventListener("click", () => {
   copyToClipboard(shortURL); // copy the short URL to clipboard
 });
 
+linkInitial.addEventListener("click", pageInitial); // // referente ao icone de inicio de tela
+btnSharing.addEventListener("click", showShareIcons, share); // botao compartilhar
 
-linkInitial.addEventListener("click",pageInitial) // // referente ao icone de inicio de tela
-btnSharing.addEventListener("click",showShareIcons,share) // botao compartilhar
-
-
-whatsLink.addEventListener("click", function() {
-  
+whatsLink.addEventListener("click", function () {
   // openlinkinBrowser("https://web.whatsapp.com/");
-  
 });
 
-linkedinLink.addEventListener("click", function() {
-shareLinkedIn()
-
-})
-
-twitterLink.addEventListener("click", function() {
- shareTwitter()
-  
+linkedinLink.addEventListener("click", function () {
+  shareLinkedIn();
 });
 
-whatsAppBtn.addEventListener('click',showWhatsAppInput) // abrindo input de prenchimento 
+twitterLink.addEventListener("click", function () {
+  shareTwitter();
+});
 
-btnValidacao.addEventListener("click",share)// botao de envio  de contato whatsApp
+whatsAppBtn.addEventListener("click", showWhatsAppInput); // abrindo input de prenchimento
 
-btnQrcode.addEventListener('click', () => {
+btnValidacao.addEventListener("click", share); // botao de envio  de contato whatsApp
+
+btnQrcode.addEventListener("click", () => {
   postQrcode();
   showingqrcode();
 });
-

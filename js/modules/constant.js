@@ -20,4 +20,5 @@ export const sharingInput = document.getElementById("field-whats") // input do c
 export const btnValidacao = document.getElementById("btn-shipping") // botao de envio  de contato whatsApp
 export const btnQrcode =document.getElementById("btn-qrcode") // botao qr code
 export const btnsalvePng = document.getElementById("salvarpng"); // dowload qrcode em png
-export const conteinerPng = document.getElementById("salvarpng");// conteiner qr code 
+export const conteinerPng = document.querySelector(".your-container");// conteiner qr code 
+

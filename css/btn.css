@@ -20,20 +20,21 @@
   
   button{
     width: 50px;
-    margin-left: 35%;
+    margin-left: 34%;
   
   }
  
 
   .btn-actions{
     display: flex;
-    gap: 2%;
+    gap: 1%;
     margin-top: 2%;
+    margin-left: 0%;
     
   
   }
   .actions{
-    width: 164px;
+    width: 160px;
     text-align: center;
     margin-left: 1%;
   }

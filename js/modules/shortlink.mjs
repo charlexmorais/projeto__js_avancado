@@ -1,7 +1,12 @@
-import { clearForm,  message,  showButtons,  statusChange, } from "./tools.js";
+import { message } from "../../copyclipboard.js";
+import { hideQrcode, shortenUrl, showButtons, statusChange } from "./screenchange.js";
+import {
+  clearForm,
+
+} from "./validation.js";
 
 export async function postDataLink() {
- statusChange() // mostrando status de carregamento 
+  statusChange(); // mostrando status de carregamento
   const urlInput = document.getElementById("input-field").value;
   const options = {
     method: "POST",
@@ -19,29 +24,29 @@ export async function postDataLink() {
   fetch("https://api.short.io/links", options)
     .then((response) => {
       if (response.ok && response.status === 200) {
-        message("success","URL foi encurtado com sucesso. Clique em Copiar ou CTRL + C para copiá-lo.")
+        message(
+          "success",
+          "URL foi encurtado com sucesso. Clique em Copiar ou CTRL + C para copiá-lo."
+        );
         return response.json();
-        
       } else {
-        message("error","Falha ao encurtar  a Url")
+        message("error", "Falha ao encurtar  a Url");
         throw new Error("Falha ao consultar a API");
-        
       }
     })
     .then((data) => {
-      console.log(data
-        )
+      console.log(data);
       const shortURL = data.shortURL;
-      const updatedAt = new Date(data.updatedAt); // data atual 
+      const updatedAt = new Date(data.updatedAt); // data atual
       const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
       const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
-      clearForm();// limpando formulario
-    
-      showButtons()// mostrando botoes na tela e icone inicial
-     
+      clearForm(); // limpando formulario
+
+      showButtons(); // mostrando botoes na tela e icone inicial
+      shortenUrl(); // alternando telas
+      
     })
-    
 
     .catch((error) => {
       if (error.response && error.response.status === 409) {
@@ -52,6 +57,3 @@ export async function postDataLink() {
       }
     });
 }
-
-
-

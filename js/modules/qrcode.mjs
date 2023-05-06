@@ -1,6 +1,6 @@
+import { message } from "../../copyclipboard.js";
 
 
-import { message } from "./tools.js";
 
 const containerPng = document.getElementById("your-container");
 
@@ -37,9 +37,10 @@ export async function postQrcode() {
       downloadLink.download = "qrcode.png";
       downloadLink.textContent = "Download";
 
-      const container = document.getElementById("your-container");
+      const container = document.querySelector(".your-container");
       container.innerHTML = "";
       container.append(image, downloadLink);
     });
 }
+
 
