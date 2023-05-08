@@ -1,6 +1,7 @@
 const domainName = localStorage.getItem("hostname");
 const domainId = localStorage.getItem("id");
-export const backPage=document.getElementById("back-page") // logo da pagina 
+export const logoPageone=document.getElementById("back-page") // logo da pagina1
+export const logoPagetwo=document.getElementById("backpagetwo") // logo da pagina2
 export const loadIng = document.getElementById("loading"); // referente ao status carregando da pagina
 export const inputField = document.querySelector("#input-field"); // campo de preenchimento para encurta url
 export const btnShorten = document.querySelector("#btn-shorten"); // botao encurtar
@@ -21,4 +22,11 @@ export const btnValidacao = document.getElementById("btn-shipping") // botao de 
 export const btnQrcode =document.getElementById("btn-qrcode") // botao qr code
 export const btnsalvePng = document.getElementById("salvarpng"); // dowload qrcode em png
 export const conteinerPng = document.querySelector(".your-container");// conteiner qr code 
+export const btnlistTable =document.querySelector(".vetor-list") // listando links na tabela 
+export const sectionpageHome=document.querySelector(".container")
+export const sectiontablelink=document.querySelector(".table-link")
+export const resultContainer = document.getElementById("resultLinks");
+export const linkTableBody = document.getElementById('linkstable');
+
+
 

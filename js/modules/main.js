@@ -1,39 +1,52 @@
 import { copyToClipboard } from "../../copyclipboard.js";
 import {
-  backPage,
+  
   btnQrcode,
   btnSharing,
   btnValidacao,
   btncopying,
+  btnlistTable,
   inputField,
   linkInitial,
   linkedinLink,
+  logoPageone,
+  logoPagetwo,
+  sectionpageHome,
+  sectiontablelink,
   twitterLink,
   whatsAppBtn,
   whatsLink,
 } from "./constant.js";
+
 import { getDataDomain } from "./domainlist.mjs";
+import { listShortLinks } from "./listaUrl.js";
+
+
 import { postQrcode } from "./qrcode.mjs";
 import { pageInitial, showShareIcons, showingqrcode } from "./screenchange.js";
-import { copyShortURL, share, shareLinkedIn, shareTwitter, showWhatsAppInput } from "./shareurl.js";
-import { postDataLink } from "./shortlink.mjs";
 import {
-  checkValidation,
-} from "./validation.js";
+  copyShortURL,
+  share,
+  shareLinkedIn,
+  shareTwitter,
+  showWhatsAppInput,
+} from "./shareurl.js";
+import { postDataLink } from "./shortlink.mjs";
+import { checkValidation } from "./validation.js";
 
 
-backPage.addEventListener("click", pageInitial); // voltando a pagina inicial
+logoPageone.addEventListener("click", pageInitial); // voltando a pagina1
+
 
 const buttonShortenLink = document.querySelector("#btn-shorten");
 
-getDataDomain();//obter domínio de dados 
+getDataDomain(); //obter domínio de dados
 
 buttonShortenLink.addEventListener("click", () => postDataLink());
 
-inputField.addEventListener("input", ()=>{
-checkValidation()
-
-} );
+inputField.addEventListener("input", () => {
+  checkValidation();
+});
 
 const form = document.querySelector("#form");
 
@@ -73,3 +86,30 @@ btnQrcode.addEventListener("click", () => {
   postQrcode();
   showingqrcode();
 });
+
+btnlistTable.addEventListener("click", () => {
+  
+  if (sectionpageHome.classList.contains("hidden")) {
+    // if the table page is hidden, show it and hide the home page
+    sectionpageHome.classList.remove("hidden");
+    sectiontablelink.classList.add("hidden");
+  } else {
+    // if the home page is hidden, show it and hide the table page
+    sectionpageHome.classList.add("hidden");
+    listShortLinks()
+    sectiontablelink.classList.remove("hidden");
+  }
+});
+logoPagetwo.addEventListener("click", () => {
+  
+  if (sectionpageHome.classList.contains("hidden")) {
+    // if the table page is hidden, show it and hide the home page
+    sectionpageHome.classList.remove("hidden");
+    sectiontablelink.classList.add("hidden");
+  } else {
+    // if the home page is hidden, show it and hide the table page
+    sectionpageHome.classList.add("hidden");
+    sectiontablelink.classList.remove("hidden");
+  }
+});
+

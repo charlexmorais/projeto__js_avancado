@@ -6,6 +6,7 @@ import {
   loadIng,
   resultScreen,
   resultShares,
+ 
 } from "./constant.js";
 
 export async function statusChange() { // status de carregamento

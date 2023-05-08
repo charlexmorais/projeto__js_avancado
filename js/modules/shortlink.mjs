@@ -1,5 +1,5 @@
 import { message } from "../../copyclipboard.js";
-import { hideQrcode, shortenUrl, showButtons, statusChange } from "./screenchange.js";
+import {  shortenUrl, showButtons, statusChange } from "./screenchange.js";
 import {
   clearForm,
 

@@ -1,0 +1,118 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+h4 {
+  display: flex;
+}
+.modal-content {
+  background-color: white;
+  width: 50%;
+  max-width: 500px;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content p {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: Arial;
+  display: inline-block;
+  width: 100px; /* Largura dos elementos <p> */
+  margin-right: 10px; /* Espaço entre os elementos <p> e <input> */
+}
+
+button#open-modal {
+  margin-top: 20px;
+}
+
+button {
+  width: 150px;
+  height: 50px;
+  margin-top: 20px;
+}
+input {
+  margin-left: 20px;
+  width: 350px;
+  height: 20px;
+}
+
+.modal-content {
+  max-width: 500px;
+  width: 100%;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 90%;
+    margin: 10% auto;
+  }
+}
+.modal-content p {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: Arial;
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+}
+/*   
+  .modal-content input {
+    margin-left: 20px;
+    width: 350px;
+    height: 20px;
+  } */
+.path-Slug {
+  width: 100px;
+  background-color: aliceblue;
+}
+
+@media (max-width: 300px) {
+  .modal-content p,
+  .modal-content input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .modal-content p {
+    width: auto;
+    margin-right: 0;
+  }
+  .path-Slug {
+    width: 100px;
+  }
+}
+@media (max-width: 300px) {
+  .modal-content p,
+  .modal-content input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .modal-content p {
+    width: auto;
+    margin-right: 0;
+  }
+  .path-Slug {
+    width: 100px;
+  }
+}
+.cancel{
+    cursor: pointer;
+    float: right;
+    width: 20px;
+}

@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="css/input.css">
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/tabela.css">
-    
-    
+    <link rel="stylesheet" href="css/modal.css">
+
+
 </head>
 
 <body>
-    <div class="vetor-config">
+    <div class="vetor-list">
         <img src="assets/img/configuracao.png" alt="vetor-config">
     </div>
-    <section class="container">
+    <section class="container hidden">
         <header>
             <h1>Encurtador de URL</h1>
 
@@ -84,28 +85,66 @@
         </div>
         <div class="your-container hidden">
             <!-- seu QR code aqui -->
-            <div id="salvarpng"  href="#"></div>
+            <div id="salvarpng" href="#"></div>
         </div>
-            
+
     </section>
-    <section class="link table hidden">
+    <section class="table-link hidden">
+        <h1>Encurtador de URL</h1>
+        <div class="icon-init">
+            <img id="backpagetwo" src="assets/img/logo.jpg" alt="logo">
+        </div>
         <h1>Gerenciar Links </h1>
-        <div>
-            <table>
-                <thead>
-                    <tr id="table">
-                        <th>link Encurtado</th>
-                        <th>Link Original</th>
-                        <th>Data/Hora</th>
-                        <th>Ação</th>
-                    </tr>
-
-                </thead>
-        </div>
-        <tbody id="link management"></tbody>
-
+        <table id="linksTable">
+            <thead>
+                <tr>
+                    <th>Link Encurtado</th>
+                    <th>Link Original</th>
+                    <th>Data/Hora</th>
+                    <th>Açâo</th>
+                </tr>
+            </thead>
+            <tbody id="resultLinks"></tbody>
         </table>
+
     </section>
+    <section class="modal-edit hidden">
+
+        <div class="modal">
+            <div class="modal-content">
+                <div class="container-modal">
+                    <h4>Editando:</h4>
+                    <p>path-Slug</p>
+                    <input class="path-Slug" type="text" name="path-Slug">
+                </div>
+                <div>
+                    
+                     <p>URL-original</p>
+                    <input class="url" type="text" name="url">
+                    <button class="save-modal btn-shorten">SALVAR</button> <!--btn-shorten aproveitando class-->
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="modal-delete ">
+
+        <div class="modal">
+            <div class="modal-content">
+                <div class="container-modal ">
+                     <img class="cancel" src="assets/img/back.png" alt="cancel">
+                    <h4>Deseja Excluir o link:</h4>
+                    <button class="btn-shorten">SIM</button>
+                   
+                    <button class="btn-shorten">NÃO</button>
+                </div>
+                
+                  
+            </div>
+        </div>
+
+    </section>
+
     <div class="footer-container content">
         <footer>
             MACH1 - Copyright © 2023
@@ -115,5 +154,3 @@
     <script src="js/modules/main.js" type="module"></script>
 
 </body>
-
-

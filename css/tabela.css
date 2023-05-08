@@ -1,0 +1,38 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #2196f3;
+}
+
+table {
+  margin: 0 auto;
+}
+
+tr {
+  background-color: beige;
+}
+th {
+  padding: 0 40px;
+}
+
+.icon-init {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+td {
+  max-width: 170px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.edit-icon {
+  align-items: center;
+  margin-right: 10px;
+}
+.delete-icon {
+  align-items: center;
+  margin-right: 60px;
+}
+td button {
+  text-align: center;
+}
