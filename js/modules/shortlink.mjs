@@ -1,4 +1,7 @@
-import { message } from "../../copyclipboard.js";
+
+import { message } from "../copyclipboard.js";
+import { postQrcode } from "./qrcode.mjs";
+
 import {  shortenUrl, showButtons, statusChange } from "./screenchange.js";
 import {
   clearForm,
@@ -22,6 +25,7 @@ export async function postDataLink() {
   };
 
   fetch("https://api.short.io/links", options)
+
     .then((response) => {
       if (response.ok && response.status === 200) {
         message(
@@ -35,14 +39,14 @@ export async function postDataLink() {
       }
     })
     .then((data) => {
-      console.log(data);
+    
       const shortURL = data.shortURL;
       const updatedAt = new Date(data.updatedAt); // data atual
       const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
       const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
       clearForm(); // limpando formulario
-
+      
       showButtons(); // mostrando botoes na tela e icone inicial
       shortenUrl(); // alternando telas
       

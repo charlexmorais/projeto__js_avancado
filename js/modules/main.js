@@ -1,9 +1,9 @@
-import { copyToClipboard } from "../../copyclipboard.js";
+
+import { copyToClipboard } from "../copyclipboard.js";
 import {
-  
   btnQrcode,
   btnSharing,
-  btnValidacao,
+  btnValidation,
   btncopying,
   btnlistTable,
   inputField,
@@ -80,7 +80,7 @@ twitterLink.addEventListener("click", function () {
 
 whatsAppBtn.addEventListener("click", showWhatsAppInput); // abrindo input de prenchimento
 
-btnValidacao.addEventListener("click", share); // botao de envio  de contato whatsApp
+btnValidation.addEventListener("click", share); // botao de envio  de contato whatsApp
 
 btnQrcode.addEventListener("click", () => {
   postQrcode();

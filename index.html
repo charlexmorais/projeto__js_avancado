@@ -20,7 +20,7 @@
     <div class="vetor-list">
         <img src="assets/img/configuracao.png" alt="vetor-config">
     </div>
-    <section class="container hidden">
+    <section class="container ">
         <header>
             <h1>Encurtador de URL</h1>
 
@@ -67,7 +67,7 @@
                     class="ap-links fa-brands fa-twitter gap-links link-icon"></i></a>
 
         </div>
-        <div class="input-whats">
+        <div class="input-whats hidden">
             <input type="tel" id="phone" class="sharing-input  hidden" id="field-whats" type="text"
                 placeholder="Digite o número que deseja compartilhar">
             <button class="sharing-input hidden fa-solid fa-share-from-square" id="btn-shipping"></button>
@@ -111,35 +111,37 @@
     <section class="modal-edit hidden">
 
         <div class="modal">
+
             <div class="modal-content">
                 <div class="container-modal">
+                    <img class="canceledit cancel" src="assets/img/back.png" alt="cancel">
                     <h4>Editando:</h4>
                     <p>path-Slug</p>
                     <input class="path-Slug" type="text" name="path-Slug">
                 </div>
                 <div>
-                    
-                     <p>URL-original</p>
-                    <input class="url" type="text" name="url">
+
+                    <p>URL-original</p>
+                    <input class="original-edit" type="text" name="url">
                     <button class="save-modal btn-shorten">SALVAR</button> <!--btn-shorten aproveitando class-->
                 </div>
             </div>
         </div>
 
     </section>
-    <section class="modal-delete ">
+    <section class="modal-delete hidden">
 
         <div class="modal">
             <div class="modal-content">
                 <div class="container-modal ">
-                     <img class="cancel" src="assets/img/back.png" alt="cancel">
+                    <img class=" canceldelete cancel" src="assets/img/back.png" alt="cancel">
                     <h4>Deseja Excluir o link:</h4>
-                    <button class="btn-shorten">SIM</button>
-                   
-                    <button class="btn-shorten">NÃO</button>
+                    <button class="delete-yes" class="btn-shorten">SIM</button>
+
+                    <button class="delete-no" class="btn-shorten">NÃO</button>
                 </div>
-                
-                  
+
+
             </div>
         </div>
 

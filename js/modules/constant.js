@@ -1,5 +1,5 @@
 const domainName = localStorage.getItem("hostname");
-const domainId = localStorage.getItem("id");
+export const domainId = localStorage.getItem("id");
 export const logoPageone=document.getElementById("back-page") // logo da pagina1
 export const logoPagetwo=document.getElementById("backpagetwo") // logo da pagina2
 export const loadIng = document.getElementById("loading"); // referente ao status carregando da pagina
@@ -11,22 +11,26 @@ export const btnActions = document.querySelector(".btn-shorten"); // class btn-s
 export const btncopying = document.querySelector("#copy"); // botao copiar
 export const resultScreen = document.getElementById("result-container"); // resultado da url encurtada na pagina
 export const btnSharing = document.getElementById("sharing"); // botoao de compartilhamento
-export const resultShares = document.getElementById("result-shares"); // conteiner de icones whatsAp,linkedin,twitter
+export const resultShares = document.querySelector(".result-shares"); // conteiner de icones whatsAp,linkedin,twitter
 export const whatsLink = document.getElementById("whats"); // abrindo pagina
 export const linkedinLink = document.getElementById("linkedin"); // abrindo nova pagina
 export const twitterLink = document.getElementById("twitter"); // abrindo nova pagina
 export const inputWhastLink = document.querySelector("sharing-input"); // campo pra preenchimento de contato
 export const whatsAppBtn = document.getElementById("whats"); // icone whatsApp
-export const sharingInput = document.getElementById("field-whats") // input do campo de preenchimento de contato
-export const btnValidacao = document.getElementById("btn-shipping") // botao de envio  de contato whatsApp
+export const sharingInput = document.querySelector("#field-whats") // input do campo de preenchimento de contato
+export const btnValidation = document.querySelector("#btn-shipping") // botao de envio  de contato whatsApp
 export const btnQrcode =document.getElementById("btn-qrcode") // botao qr code
 export const btnsalvePng = document.getElementById("salvarpng"); // dowload qrcode em png
 export const conteinerPng = document.querySelector(".your-container");// conteiner qr code 
 export const btnlistTable =document.querySelector(".vetor-list") // listando links na tabela 
-export const sectionpageHome=document.querySelector(".container")
-export const sectiontablelink=document.querySelector(".table-link")
-export const resultContainer = document.getElementById("resultLinks");
-export const linkTableBody = document.getElementById('linkstable');
+export const sectionpageHome=document.querySelector(".container") // pagina home
+export const sectiontablelink=document.querySelector(".table-link")// pagina com tabela de  links
+export const resultContainer = document.getElementById("resultLinks");//tabela com os links encurtados
+export const btnSalve =document.querySelector(".save-modal") // salvando atualizacao da url na tabela
+export const btnYes=document.querySelector(".delete-yes")
+export const btnNo=document.querySelector(".delete-no")
+export const btnCancelmodaledit =document.querySelector(".canceledit") // icone cancelar 
+export const btnCancelmodaldelete =document.querySelector(".canceldelete") // icone cancelar 
 
 
 

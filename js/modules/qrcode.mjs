@@ -1,5 +1,4 @@
-import { message } from "../../copyclipboard.js";
-
+import { message } from "../copyclipboard.js";
 
 
 const containerPng = document.getElementById("your-container");
@@ -42,5 +41,6 @@ export async function postQrcode() {
       container.append(image, downloadLink);
     });
 }
+
 
 

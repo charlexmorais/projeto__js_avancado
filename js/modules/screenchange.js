@@ -6,7 +6,7 @@ import {
   loadIng,
   resultScreen,
   resultShares,
- 
+
 } from "./constant.js";
 
 export async function statusChange() { // status de carregamento
@@ -29,7 +29,8 @@ export function pageInitial() { // voltando a tela inicial
   resultScreen.classList.toggle("hidden"); // ocultando url e data
   btnActions.classList.add("hidden"); // ocultando botoes de acoes
   conteinerPng.classList.add("hidden"); // ocultando qr code 
-
+  
+ 
   if (Array.isArray(btnActions)) {
     btnActions.forEach((button) => {
       button.classList.add("hidden");
@@ -73,8 +74,9 @@ export function showingqrcode() { // ocultando botoes e icones
 
 export function showShareIcons() {// mostrando icones whats ,linkedin , twitter
   
-  resultShares.classList.add("hidden");
+  resultShares.classList.remove("hidden");
 }
 export function hideQrcode() { // mostrando qr code na tela
   conteinerPng.classList.remove("hidden");
 }
+

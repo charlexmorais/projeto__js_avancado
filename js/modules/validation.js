@@ -12,17 +12,11 @@ export function checkValidation() {
 export function clearForm() {
   inputField.value = "";
 }
-
-// const array =[]
-
-// export const tableOrderView = () => {
-//   resultContainer.innerHTML = "";
-//   array.forEach((item) => {
-//     resultContainer.innerHTML += `<tr>
-//                           <td>${item.}</td>
-//                           <td>${item.}</td>
-//                           <td>${item.qty}</td>
-//                           <td>R$ ${item.price}</td>
-//                         </tr>`;
-//   }); // It loops through the filled array and puts the data in the HTML
-// };
+export function cancelmodalEdit(){
+  const sectionEdit = document.querySelector(".modal-edit");
+  sectionEdit.classList.add("hidden");
+}
+export function cancelmodalDelete(){
+  const sectionDelete= document.querySelector(".modal-delete");
+  sectionDelete.classList.add("hidden");
+}

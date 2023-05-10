@@ -41,7 +41,7 @@ export function copyToClipboard(short) {
       alertaMensagem.style.opacity = "0";
       setTimeout(function () {
         document.body.removeChild(alertaMensagem);
-      }, 1000);
-    }, 1000);
+      }, 3000);
+    }, 3000);
   }
   

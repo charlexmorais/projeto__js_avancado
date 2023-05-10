@@ -8,6 +8,8 @@
 }
 h4 {
   display: flex;
+
+  text-decoration: underline;
 }
 .modal-content {
   background-color: white;
@@ -44,6 +46,7 @@ input {
   margin-left: 20px;
   width: 350px;
   height: 20px;
+  border-radius: 4px black;
 }
 
 .modal-content {
@@ -68,15 +71,9 @@ input {
   width: 100px;
   margin-right: 10px;
 }
-/*   
-  .modal-content input {
-    margin-left: 20px;
-    width: 350px;
-    height: 20px;
-  } */
+
 .path-Slug {
   width: 100px;
-  background-color: aliceblue;
 }
 
 @media (max-width: 300px) {
@@ -111,8 +108,8 @@ input {
     width: 100px;
   }
 }
-.cancel{
-    cursor: pointer;
-    float: right;
-    width: 20px;
+.cancel {
+  cursor: pointer;
+  float: right;
+  width: 20px;
 }
