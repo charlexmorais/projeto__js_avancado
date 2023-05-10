@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/tabela.css">
     <link rel="stylesheet" href="css/modal.css">
-
+  
 
 </head>
 
 <body>
     <div class="vetor-list">
-        <img src="assets/img/configuracao.png" alt="vetor-config">
+        <img src="assets/img/list.png" alt="vetor-config">
     </div>
     <section class="container ">
         <header>
@@ -39,10 +39,8 @@
 
 
             <div class=button-container>
-                <!-- <button type ="button" id="shorten"class="btn-shorten">ENCURTAR</button> -->
 
                 <button type="button" id="btn-shorten" class="btn-shorten " disabled>ENCURTAR</button>
-
 
             </div>
 
@@ -52,8 +50,6 @@
                 </div>
             </div>
         </form>
-        <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: pt_BR</script>
-
 
 
         <div id="result-shares" class="result-shares  hidden">
@@ -61,13 +57,14 @@
             <a id="whats"><i class="fa-brands fa-whatsapp gap-links whats link-icon"></i></a>
 
             <a id="linkedin" href="https://www.linkedin.com/" target="_blank"><i
-                    class=" ap-links fa-brands fa-linkedin gap-links link-icon"></i></a>
+            class=" ap-links fa-brands fa-linkedin gap-links link-icon"></i></a>
 
             <a id="twitter" href="https://twitter.com/" target="_blank"><i
-                    class="ap-links fa-brands fa-twitter gap-links link-icon"></i></a>
+            class="ap-links fa-brands fa-twitter gap-links link-icon"></i></a>
 
         </div>
-        <div class="input-whats hidden">
+
+        <div class="input-whats">
             <input type="tel" id="phone" class="sharing-input  hidden" id="field-whats" type="text"
                 placeholder="Digite o número que deseja compartilhar">
             <button class="sharing-input hidden fa-solid fa-share-from-square" id="btn-shipping"></button>
@@ -78,24 +75,26 @@
 
         <div class="btn-actions">
             <button id="copy" class="btn-shorten actions hidden"><i class="fa-regular fa-copy"></i>COPIAR</button>
-            <button id="sharing" class="btn-shorten actions hidden"><i
-                    class="fa-solid fa-share-from-square"></i>COMPARTILHAR</button>
-            <button id="btn-qrcode" class="btn-shorten actions hidden"><i class="fa-solid fa-qrcode"></i>QR
-                CODE</button>
+           
+            
+            <button id="sharing" class="btn-shorten actions hidden"><i class="fa-solid fa-share-from-square"></i>COMPARTILHAR</button>
+
+
+            <button id="btn-qrcode" class="btn-shorten actions hidden"><i class="fa-solid fa-qrcode"></i>QRCODE</button>
         </div>
         <div class="your-container hidden">
-            <!-- seu QR code aqui -->
-            <div id="salvarpng" href="#"></div>
+            
+            <div id="salvepng" href="#"></div>
         </div>
 
     </section>
-    <section class="table-link hidden">
+    <section class="table-link hidden"> <!-- tabela de links encurtados-->
         <h1>Encurtador de URL</h1>
         <div class="icon-init">
             <img id="backpagetwo" src="assets/img/logo.jpg" alt="logo">
         </div>
         <h1>Gerenciar Links </h1>
-        <table id="linksTable">
+        <table >
             <thead>
                 <tr>
                     <th>Link Encurtado</th>
@@ -108,13 +107,13 @@
         </table>
 
     </section>
-    <section class="modal-edit hidden">
+    <section class="modal-edit hidden"> <!--modal editar-->
 
         <div class="modal">
 
             <div class="modal-content">
                 <div class="container-modal">
-                    <img class="canceledit cancel" src="assets/img/back.png" alt="cancel">
+                    <img class="canceledit cancel" src="assets/img/cancel.png" alt="cancel">
                     <h4>Editando:</h4>
                     <p>path-Slug</p>
                     <input class="path-Slug" type="text" name="path-Slug">
@@ -129,16 +128,16 @@
         </div>
 
     </section>
-    <section class="modal-delete hidden">
+    <section class="modal-delete hidden"><!--modal delete -->
 
         <div class="modal">
             <div class="modal-content">
                 <div class="container-modal ">
-                    <img class=" canceldelete cancel" src="assets/img/back.png" alt="cancel">
+                    <img class=" canceldelete cancel" src="assets/img/cancel.png" alt="cancel">
                     <h4>Deseja Excluir o link:</h4>
-                    <button class="delete-yes" class="btn-shorten">SIM</button>
+                    <button class="delete-yes btn-shorten" >SIM</button>
 
-                    <button class="delete-no" class="btn-shorten">NÃO</button>
+                    <button class="delete-no btn-shorten" >NÃO</button>
                 </div>
 
 

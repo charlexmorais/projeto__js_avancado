@@ -1,31 +1,35 @@
-
-
 import { message } from "../copyclipboard.js";
-import { btnCancelmodaldelete, btnCancelmodaledit, btnNo, btnSalve, btnYes, domainId } from "./constant.js";
+import {
+  btnCancelmodaldelete,
+  btnCancelmodaledit,
+  btnNo,
+  btnSalve,
+  btnYes,
+  domainId,
+} from "./constant.js";
 import { deleteURLlist } from "./delete.js";
 import { updateURL } from "./editUrl.js";
-import { postQrcode } from "./qrcode.mjs";
 
+import { apikey } from "../../config.js";
 
 import { cancelmodalDelete, cancelmodalEdit } from "./validation.js";
 
-
-export function listShortLinks() {
+export function listShortLinks() { // listando links curtos
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: "sk_cLUlPAw7VcmekH0r",
+      Authorization: `${apikey}`,
     },
   };
 
-  fetch(
-    "https://api.short.io/api/links?domain_id="+domainId,
-    options
-  )
+  fetch("https://api.short.io/api/links?domain_id=" + domainId, options)
     .then((response) => {
       if (response.ok && response.status === 200) {
-        message("success", "Lista  de links foi  carregada com sucesso.");
+        
+        setTimeout(() => {
+          message("success", "Lista  de links foi  carregada com sucesso.");
+        }, 1000);
         return response.json();
       } else {
         message("error", "Falha ao carregar lista de links.");
@@ -33,7 +37,6 @@ export function listShortLinks() {
       }
     })
     .then((data) => {
-     
       displayTable(data.links);
     })
     .catch((error) => {
@@ -44,10 +47,9 @@ export function listShortLinks() {
       }
     });
 }
-export function displayTable(data) {
-  
+export function displayTable(data) { // mostrando tabela de links 
   const resultContainer = document.getElementById("resultLinks");
-  let tableHTML = `<table><tr><th>Short URL</th><th>Original URL</th><th>Created At</th><th></th></tr>`;
+  let tableHTML = `<table><tr><th></th><th></th><th></th><th></th></tr>`;
 
   data.forEach((link) => {
     const shortURL = link.shortURL;
@@ -59,45 +61,40 @@ export function displayTable(data) {
   tableHTML += `</table>`;
   resultContainer.innerHTML = tableHTML;
 
-  const editIcons = document.querySelectorAll(".edit-icon"); // clique no icone edit
+  const editIcons = document.querySelectorAll(".edit-icon"); 
   editIcons.forEach((editIcon) => {
     editIcon.addEventListener("click", () => {
-      let  idString = editIcon.getAttribute("idstring");
-    
-      
+      let idString = editIcon.getAttribute("idstring"); // id istring 
+
       const urlOriginal = editIcon
         .closest("tr")
-        .querySelector("td:nth-child(2)").textContent; // pegando link
+        .querySelector("td:nth-child(2)").textContent; // pegando link curto 
       const shortURL = editIcon
         .closest("tr")
         .querySelector("td:nth-child(1)").textContent; // pegando pathSlug
       const pathSlug = editIcon
         .closest("tr")
         .querySelector("td:nth-child(1)").textContent;
-      containereditUrl(shortURL, urlOriginal, pathSlug,idString);
-      
-     
+      containereditUrl(shortURL, urlOriginal, pathSlug, idString);
     });
   });
-  const deleteIcons = document.querySelectorAll(".delete-icon"); // clique no icone edit
+  const deleteIcons = document.querySelectorAll(".delete-icon"); 
   deleteIcons.forEach((deleteIcon) => {
     deleteIcon.addEventListener("click", () => {
-      let  idString =deleteIcon.getAttribute("idstring");
-      
+      let idString = deleteIcon.getAttribute("idstring"); // id istring 
+
       const shortURL = deleteIcon
         .closest("tr")
-        
-      
-      containeredeleteUrl(idString)
-      postQrcode(idString)
-     
+        .querySelector("td:nth-child(1)").textContent; // pegando pathSlug
+
+      containeredeleteUrl(idString, shortURL);
     });
   });
 }
 
-function containereditUrl(shortURL, originalURL, path,idString) {
+function containereditUrl(shortURL, originalURL, path, idString) {
   // mostrando modal editar url
-  
+
   const sectionmodalEdit = document.querySelector(".modal-edit");
   const h4EditLink = sectionmodalEdit.querySelector("h4");
   h4EditLink.textContent = `Editando:${shortURL}`;
@@ -109,32 +106,41 @@ function containereditUrl(shortURL, originalURL, path,idString) {
   urlOriginalInput.value = originalURL;
 
   sectionmodalEdit.classList.remove("hidden");
-  
 
-  btnSalve.onclick= ()=>updateURL( urlOriginalInput.value, pathSlug.value ,idString)
-  
-btnCancelmodaledit.addEventListener("click",cancelmodalEdit)
+  btnSalve.onclick = () =>
+    updateURL(urlOriginalInput.value, pathSlug.value, idString);
 
+  btnCancelmodaledit.addEventListener("click", cancelmodalEdit); // cancelando modal editar
 }
 
-function containeredeleteUrl(idString) {
+function containeredeleteUrl(idString, shortURL) {
   // mostrando modal delete url
-  
+
   const sectionmodalDelete = document.querySelector(".modal-delete");
   const h4DeleteLink = sectionmodalDelete.querySelector("h4");
-  h4DeleteLink.textContent = `${idString}`;
+  h4DeleteLink.textContent = `Tem certeza que deseja excluir o link "${shortURL}"`;
 
   sectionmodalDelete.classList.remove("hidden");
+  btnYes.onclick = () => {
+    deleteURLlist(idString, shortURL)
+      .then((response) => {
+       
+        setTimeout(() => {
+          message("success", "Link excluído com sucesso.");
+        }, 2000);
+        console.log(response);
+      })
+      .catch((error) => {
+        message("error", "Falha ao excluir link.");
+        console.log(error);
+      });
+  };
   
-  btnYes.onclick= ()=>deleteURLlist(idString)
-   
+  
 
   btnNo.onclick = () => {
     sectionmodalDelete.classList.add("hidden");
   };
-  
-  
-  
-  btnCancelmodaldelete.addEventListener("click",cancelmodalDelete)
-}
 
+  btnCancelmodaldelete.addEventListener("click", cancelmodalDelete); // cancelando modal editar 
+}

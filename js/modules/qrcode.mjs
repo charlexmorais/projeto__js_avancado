@@ -1,24 +1,29 @@
 import { message } from "../copyclipboard.js";
+import { apikey } from "../../config.js";
+import { showingqrcode } from "./screenchange.js";
 
 
 const containerPng = document.getElementById("your-container");
 
-export async function postQrcode() {
+export async function postQrcode(idString) {
+  
+  showingqrcode();
   const options = {
     method: "POST",
     headers: {
       accept: "image/png",
       "content-type": "application/json",
-      Authorization: "sk_cLUlPAw7VcmekH0r",
+      Authorization: `${apikey}`,
     },
     body: JSON.stringify({ type: "png" }),
   };
 
-  fetch("https://api.short.io/links/qr/lnk_2Y8g_9dCPkoZDOWZ", options)
+  fetch(`https://api.short.io/links/qr/${idString}`, options)
+  
     .then((response) => {
-      if (response.ok && response.status === 201) {
-        message("success", "Ação realizada com sucesso!");
+      if (response.ok && response.status === 201 ) {
         return response.blob();
+        
       } else {
         message("error", "Falha ao enviar!");
         throw new Error("Falha ao consultar a API");
@@ -26,6 +31,7 @@ export async function postQrcode() {
     })
     .then((data) => {
       console.log(data);
+      // criando qr code 
       const imageObjectURL = URL.createObjectURL(data);
 
       const image = document.createElement("img");

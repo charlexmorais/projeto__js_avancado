@@ -1,36 +1,43 @@
+ // troca de telas
+
 import {
   btnActions,
   btnShorten,
+  btnsubmitContact,
   conteinerPng,
+  inputWhastLink,
   linkInitial,
   loadIng,
   resultScreen,
   resultShares,
-
 } from "./constant.js";
 
-export async function statusChange() { // status de carregamento
-  
+export async function statusChange() {
+  // status de carregamento
+
   loadIng.classList.remove("hidden");
 }
-export function showButtons() { // mostrando botoes na tela e icone inicial - shortlink
-  
+export function showButtons() {
+  // mostrando botoes na tela e icone inicial - shortlink
+
   const buttons = document.querySelectorAll(".btn-shorten");
   linkInitial.classList.remove("hidden");
   buttons.forEach((button) => {
     button.classList.remove("hidden");
   });
 }
-export function pageInitial() { // voltando a tela inicial
-  showingqrcode(); 
+export function pageInitial() {
+  // voltando a tela inicial
+  showingqrcode();
   hideQrcode();
-  loadIng.classList.add("hidden"); // ocultando div div
-  linkInitial.classList.add("hidden"); // ocultando icone
-  resultScreen.classList.toggle("hidden"); // ocultando url e data
+  btnsubmitContact.classList.add("hidden"); //ocultando btnValidat
+  inputWhastLink.classList.add("hidden"); // ocultando input de envio de contato whatsapp
+  loadIng.classList.add("hidden"); // ocultando carregamento
+  linkInitial.classList.add("hidden"); // ocultando icone inicio
+  resultScreen.classList.add("hidden"); // ocultando url
   btnActions.classList.add("hidden"); // ocultando botoes de acoes
-  conteinerPng.classList.add("hidden"); // ocultando qr code 
-  
- 
+  conteinerPng.classList.add("hidden"); // ocultando qr code
+
   if (Array.isArray(btnActions)) {
     btnActions.forEach((button) => {
       button.classList.add("hidden");
@@ -42,14 +49,13 @@ export function pageInitial() { // voltando a tela inicial
   btnShorten.classList.remove("hidden");
 }
 
-export function shortenUrl() { 
+export function showingScreen() {
+  // mostra todos os elementos ocultos anteriormente
 
-// mostra todos os elementos ocultos anteriormente
-  
-  loadIng.classList.remove("hidden");//mostrando  status carregamento
-  linkInitial.classList.remove("hidden");//mostrando  link de inicio de pagina
+  loadIng.classList.remove("hidden"); //mostrando  status carregamento
+  linkInitial.classList.remove("hidden"); //mostrando  link de inicio de pagina
   resultScreen.classList.remove("hidden"); //mostrando  url encurtada
-  btnActions.classList.remove("hidden");//mostrando  todos dos botoes 
+  btnActions.classList.remove("hidden"); //mostrando  todos dos botoes
 
   if (Array.isArray(btnActions)) {
     btnActions.forEach((button) => {
@@ -62,9 +68,12 @@ export function shortenUrl() {
   btnShorten.classList.remove("hidden");
 }
 
-export function showingqrcode() { // ocultando botoes e icones 
-  
-  hideQrcode();// mostrando qr code na tela
+export function showingqrcode() {
+  // ocultando botoes e icones
+
+  hideQrcode(); // mostrando qr code na tela
+  btnsubmitContact.classList.add("hidden"); // ocultando botao de envio de contato
+  inputWhastLink.classList.add("hidden"); // ocultando input de envio de contato whatsapp
   resultShares.classList.add("hidden"); // conteiner de icones whatsAp,linkedin,twitter
   const buttons = document.querySelectorAll(".btn-shorten");
   buttons.forEach((button) => {
@@ -72,11 +81,13 @@ export function showingqrcode() { // ocultando botoes e icones
   });
 }
 
-export function showShareIcons() {// mostrando icones whats ,linkedin , twitter
-  
+export function showShareIcons() {
+  // mostrando icones whats ,linkedin , twitter
+
   resultShares.classList.remove("hidden");
+  btnShorten.classList.add("hidden");
 }
-export function hideQrcode() { // mostrando qr code na tela
+export function hideQrcode() {
+  // mostrando qr code na tela
   conteinerPng.classList.remove("hidden");
 }
-

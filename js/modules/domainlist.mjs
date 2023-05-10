@@ -1,14 +1,17 @@
-export function getDataDomain() {
+import { apikey } from "../../config.js";
+
+export function getDataDomain() { //listando dominios 
   if (!localStorage.getItem("id") || !localStorage.getItem("hostname")) {
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: "sk_cLUlPAw7VcmekH0r",
+        Authorization: `${apikey}`,
       },
     };
+    
 
-    fetch("https://api.short.io/api/domains", options) // dominio de links
+    fetch("https://api.short.io/api/domains", options) 
       .then((response) => {
         if (response.ok && response.status === 200) {
           return response.json();

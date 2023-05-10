@@ -1,17 +1,18 @@
 
+import { apikey } from "../../config.js";
 import { message } from "../copyclipboard.js";
 import { listShortLinks } from "./listaUrl.js";
 
 
 
-export function updateURL(urlOriginal, pathSlug,idString) {
+export function updateURL(urlOriginal, pathSlug,idString) { // editando url
   console.log(idString)
   const options = {
     method: "POST",
     headers: {
       accept: "application/json",
       "content-type": "application/json",
-      Authorization: "sk_cLUlPAw7VcmekH0r",
+      Authorization:`${apikey}`,
     },
     body: JSON.stringify({originalURL: urlOriginal, path: pathSlug})
   };

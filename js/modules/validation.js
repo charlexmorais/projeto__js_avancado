@@ -1,4 +1,6 @@
-import { btnShorten, inputField, } from "./constant.js";
+import { message } from "../copyclipboard.js";
+import { btnShorten, inputField } from "./constant.js";
+
 
 export function checkValidation() {
   // desbilitando botao encurtar  , quando nao tem valor no input
@@ -12,11 +14,12 @@ export function checkValidation() {
 export function clearForm() {
   inputField.value = "";
 }
-export function cancelmodalEdit(){
+export function cancelmodalEdit() {
   const sectionEdit = document.querySelector(".modal-edit");
   sectionEdit.classList.add("hidden");
+  
 }
-export function cancelmodalDelete(){
-  const sectionDelete= document.querySelector(".modal-delete");
+export function cancelmodalDelete() {
+  const sectionDelete = document.querySelector(".modal-delete");
   sectionDelete.classList.add("hidden");
 }

@@ -1,14 +1,16 @@
-
 import { message } from "../copyclipboard.js";
 import { postQrcode } from "./qrcode.mjs";
+import { apikey } from "../../config.js";
 
-import {  shortenUrl, showButtons, statusChange } from "./screenchange.js";
 import {
-  clearForm,
+  showButtons,
+  showingScreen,
+  statusChange,
+} from "./screenchange.js";
+import { clearForm } from "./validation.js";
+import { btnQrcode } from "./constant.js";
 
-} from "./validation.js";
-
-export async function postDataLink() {
+export async function postDataLink() { // encurtando link 
   statusChange(); // mostrando status de carregamento
   const urlInput = document.getElementById("input-field").value;
   const options = {
@@ -16,8 +18,9 @@ export async function postDataLink() {
     headers: {
       accept: "application/json",
       "content-type": "application/json",
-      Authorization: "sk_cLUlPAw7VcmekH0r",
+      Authorization: `${apikey}`,
     },
+
     body: JSON.stringify({
       domain: "91ng.short.gy",
       originalURL: urlInput,
@@ -25,7 +28,6 @@ export async function postDataLink() {
   };
 
   fetch("https://api.short.io/links", options)
-
     .then((response) => {
       if (response.ok && response.status === 200) {
         message(
@@ -38,17 +40,21 @@ export async function postDataLink() {
         throw new Error("Falha ao consultar a API");
       }
     })
+
     .then((data) => {
-    
       const shortURL = data.shortURL;
       const updatedAt = new Date(data.updatedAt); // data atual
       const updatedAtFormatted = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
       const resultContainer = document.getElementById("result-container");
       resultContainer.innerHTML = ` URL: ${shortURL}<br>Link criado em: ${updatedAtFormatted}`;
       clearForm(); // limpando formulario
-      
+
       showButtons(); // mostrando botoes na tela e icone inicial
-      shortenUrl(); // alternando telas
+     // alternando telas
+      showingScreen()
+      const idString = data.idString;
+      // console.log(idString); // obtem o valor do ID
+      btnQrcode.onclick= ()=>postQrcode(idString)
       
     })
 
