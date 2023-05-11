@@ -13,8 +13,9 @@ import {
   sectionTablelink,
   twitterLink,
   whatsAppBtn,
-  whatsLink,
+ 
   btnsubmitContact,
+  sharingInput,
 } from "./constant.js";
 
 import { getDataDomain } from "./domainlist.mjs";
@@ -29,7 +30,7 @@ import {
   showWhatsAppInput,
 } from "./shareurl.js";
 import { postDataLink } from "./shortlink.mjs";
-import { checkValidation } from "./validation.js";
+import { checkValidation,  } from "./validation.js";
 
 logoPageone.addEventListener("click", pageInitial); // voltando a pagina1
 

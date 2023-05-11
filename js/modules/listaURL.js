@@ -4,6 +4,7 @@ import {
   btnCancelmodaledit,
   btnNo,
   btnSalve,
+ 
   btnYes,
   domainId,
 } from "./constant.js";
@@ -13,6 +14,7 @@ import { updateURL } from "./editUrl.js";
 import { apikey } from "../../config.js";
 
 import { cancelmodalDelete, cancelmodalEdit } from "./validation.js";
+
 
 export function listShortLinks() { // listando links curtos
   const options = {
@@ -47,6 +49,8 @@ export function listShortLinks() { // listando links curtos
       }
     });
 }
+
+
 export function displayTable(data) { // mostrando tabela de links 
   const resultContainer = document.getElementById("resultLinks");
   let tableHTML = `<table><tr><th></th><th></th><th></th><th></th></tr>`;
@@ -56,7 +60,7 @@ export function displayTable(data) { // mostrando tabela de links
     const urlOriginal = link.originalURL;
     const createdAt = new Date(link.createdAt);
     const createdAtFormatted = `${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`;
-    tableHTML += `<tr><td>${shortURL}</td><td>${urlOriginal}</td><td>${createdAtFormatted}</td><td><img src="../assets/img/edit.png" class="icon-conf edit-icon" style="width: 20px;" idstring="${link.idString}"> <img src="../assets/img/delete.png" class="icon-conf delete-icon" style="width: 20px;" idstring="${link.idString}"></td></tr>`;
+    tableHTML += `<tr><td>${shortURL}</td><td>${urlOriginal}</td><td>${createdAtFormatted}</td><td><img src="../assets/img/edit.png" class="icon-conf edit-icon"style="width: 20px;" idstring="${link.idString}"" onclick="showingScreen()"> <img src="../assets/img/delete.png" class="icon-conf delete-icon" style="width: 20px;" idstring="${link.idString}"></td></tr>`;
   });
   tableHTML += `</table>`;
   resultContainer.innerHTML = tableHTML;
@@ -64,8 +68,9 @@ export function displayTable(data) { // mostrando tabela de links
   const editIcons = document.querySelectorAll(".edit-icon"); 
   editIcons.forEach((editIcon) => {
     editIcon.addEventListener("click", () => {
+  
       let idString = editIcon.getAttribute("idstring"); // id istring 
-
+      
       const urlOriginal = editIcon
         .closest("tr")
         .querySelector("td:nth-child(2)").textContent; // pegando link curto 
@@ -81,6 +86,8 @@ export function displayTable(data) { // mostrando tabela de links
   const deleteIcons = document.querySelectorAll(".delete-icon"); 
   deleteIcons.forEach((deleteIcon) => {
     deleteIcon.addEventListener("click", () => {
+      
+
       let idString = deleteIcon.getAttribute("idstring"); // id istring 
 
       const shortURL = deleteIcon
@@ -123,6 +130,7 @@ function containeredeleteUrl(idString, shortURL) {
   sectionmodalDelete.classList.remove("hidden");
   btnYes.onclick = () => {
     deleteURLlist(idString, shortURL)
+    
       .then((response) => {
        
         setTimeout(() => {

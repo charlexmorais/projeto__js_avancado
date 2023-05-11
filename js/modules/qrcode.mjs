@@ -1,6 +1,6 @@
 import { message } from "../copyclipboard.js";
 import { apikey } from "../../config.js";
-import { showingqrcode } from "./screenchange.js";
+import {  showingqrcode } from "./screenchange.js";
 
 
 const containerPng = document.getElementById("your-container");
@@ -8,6 +8,7 @@ const containerPng = document.getElementById("your-container");
 export async function postQrcode(idString) {
   
   showingqrcode();
+  
   const options = {
     method: "POST",
     headers: {

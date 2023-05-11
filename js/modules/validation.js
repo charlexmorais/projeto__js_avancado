@@ -1,5 +1,5 @@
-import { message } from "../copyclipboard.js";
-import { btnShorten, inputField } from "./constant.js";
+
+import { btnShorten, inputField,  } from "./constant.js";
 
 
 export function checkValidation() {
@@ -23,3 +23,6 @@ export function cancelmodalDelete() {
   const sectionDelete = document.querySelector(".modal-delete");
   sectionDelete.classList.add("hidden");
 }
+
+
+

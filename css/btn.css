@@ -17,6 +17,22 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .colorful-button {
+    background-color: #FFD700;
+    color: #000000;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .colorful-button:hover {
+    background-color: #FFA500;
+    color: #FFFFFF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
   
   
   button{

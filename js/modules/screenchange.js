@@ -51,7 +51,7 @@ export function pageInitial() {
 
 export function showingScreen() {
   // mostra todos os elementos ocultos anteriormente
-
+  
   loadIng.classList.remove("hidden"); //mostrando  status carregamento
   linkInitial.classList.remove("hidden"); //mostrando  link de inicio de pagina
   resultScreen.classList.remove("hidden"); //mostrando  url encurtada
@@ -78,7 +78,9 @@ export function showingqrcode() {
   const buttons = document.querySelectorAll(".btn-shorten");
   buttons.forEach((button) => {
     button.classList.add("hidden");
+    
   });
+  
 }
 
 export function showShareIcons() {
