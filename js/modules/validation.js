@@ -2,14 +2,17 @@
 import { btnShorten, inputField,  } from "./constant.js";
 
 
-export function checkValidation() {
-  // desbilitando botao encurtar  , quando nao tem valor no input
-  if (inputField.value === "") {
+export function checkValidation() { // validacao para url 
+  const urlPattern = /^((http|https):\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+  
+// desativando o botão encurtar quando o campo de entrada está vazio ou não corresponde ao padrão de URL
+  if (inputField.value === "" || !urlPattern.test(inputField.value)) {
     btnShorten.disabled = true;
   } else {
     btnShorten.disabled = false;
   }
 }
+
 // limpando campo de input
 export function clearForm() {
   inputField.value = "";

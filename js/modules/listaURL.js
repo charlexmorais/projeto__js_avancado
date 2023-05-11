@@ -129,13 +129,16 @@ function containeredeleteUrl(idString, shortURL) {
 
   sectionmodalDelete.classList.remove("hidden");
   btnYes.onclick = () => {
+    sectionmodalDelete.classList.add("hidden");
     deleteURLlist(idString, shortURL)
     
       .then((response) => {
-       
+        
         setTimeout(() => {
+          
           message("success", "Link excluído com sucesso.");
         }, 2000);
+        
         console.log(response);
       })
       .catch((error) => {
