@@ -1,4 +1,4 @@
-import { copyToClipboard } from "../copyclipboard.js";
+
 import {
   btnSharing,
   btncopying,
@@ -13,10 +13,13 @@ import {
   sectionTablelink,
   twitterLink,
   whatsAppBtn,
- 
   btnsubmitContact,
-  sharingInput,
+  conteinerPng,
+  resultScreen,
+  btnShorten,
+ 
 } from "./constant.js";
+import { copyToClipboard } from "./copyclipboard.js";
 
 import { getDataDomain } from "./domainlist.mjs";
 import { listShortLinks } from "./listaUrl.js";
@@ -32,8 +35,7 @@ import {
 import { postDataLink } from "./shortlink.mjs";
 import { checkValidation,  } from "./validation.js";
 
-logoPageone.addEventListener("click", pageInitial); // voltando a pagina1
-
+logoPageone.addEventListener("click", pageInitial); // voltando a pagina
 getDataDomain(); //obter domínio de dados
 
 buttonShortenLink.addEventListener("click", () => postDataLink());
@@ -77,6 +79,11 @@ logoPagetwo.addEventListener("click", () => {
   if (sectionpageHome.classList.contains("hidden")) {
     sectionpageHome.classList.remove("hidden");
     sectionTablelink.classList.add("hidden");
+    conteinerPng.classList.add("hidden")
+    resultScreen.classList.add("hidden")
+    btnShorten.classList.remove("hidden")
+    linkInitial.classList.add("hidden")
+    
   } else {
     sectionpageHome.classList.add("hidden");
     sectionTablelink.classList.remove("hidden");

@@ -1,22 +1,22 @@
-import { message } from "../copyclipboard.js";
 import {
   btnCancelmodaldelete,
   btnCancelmodaledit,
   btnNo,
   btnSalve,
- 
   btnYes,
   domainId,
 } from "./constant.js";
-import { deleteURLlist } from "./delete.js";
+
 import { updateURL } from "./editUrl.js";
 
 import { apikey } from "../../config.js";
 
 import { cancelmodalDelete, cancelmodalEdit } from "./validation.js";
-
-
-export function listShortLinks() { // listando links curtos
+import { message } from "./copyclipboard.js";
+import { deleteURLlist } from "./delete.js";
+[];
+export function listShortLinks() {
+  // listando links curtos
   const options = {
     method: "GET",
     headers: {
@@ -28,9 +28,8 @@ export function listShortLinks() { // listando links curtos
   fetch("https://api.short.io/api/links?domain_id=" + domainId, options)
     .then((response) => {
       if (response.ok && response.status === 200) {
-        
         setTimeout(() => {
-          message("success", "Lista  de links foi  carregada com sucesso.");
+          message("success", "Lista  de links foi  atualizada.");
         }, 1000);
         return response.json();
       } else {
@@ -50,8 +49,8 @@ export function listShortLinks() { // listando links curtos
     });
 }
 
-
-export function displayTable(data) { // mostrando tabela de links 
+export function displayTable(data) {
+  // mostrando tabela de links
   const resultContainer = document.getElementById("resultLinks");
   let tableHTML = `<table><tr><th></th><th></th><th></th><th></th></tr>`;
 
@@ -65,15 +64,14 @@ export function displayTable(data) { // mostrando tabela de links
   tableHTML += `</table>`;
   resultContainer.innerHTML = tableHTML;
 
-  const editIcons = document.querySelectorAll(".edit-icon"); 
+  const editIcons = document.querySelectorAll(".edit-icon");
   editIcons.forEach((editIcon) => {
     editIcon.addEventListener("click", () => {
-  
-      let idString = editIcon.getAttribute("idstring"); // id istring 
-      
+      let idString = editIcon.getAttribute("idstring"); // id istring
+
       const urlOriginal = editIcon
         .closest("tr")
-        .querySelector("td:nth-child(2)").textContent; // pegando link curto 
+        .querySelector("td:nth-child(2)").textContent; // pegando link curto
       const shortURL = editIcon
         .closest("tr")
         .querySelector("td:nth-child(1)").textContent; // pegando pathSlug
@@ -83,12 +81,10 @@ export function displayTable(data) { // mostrando tabela de links
       containereditUrl(shortURL, urlOriginal, pathSlug, idString);
     });
   });
-  const deleteIcons = document.querySelectorAll(".delete-icon"); 
+  const deleteIcons = document.querySelectorAll(".delete-icon");
   deleteIcons.forEach((deleteIcon) => {
     deleteIcon.addEventListener("click", () => {
-      
-
-      let idString = deleteIcon.getAttribute("idstring"); // id istring 
+      let idString = deleteIcon.getAttribute("idstring"); // id istring
 
       const shortURL = deleteIcon
         .closest("tr")
@@ -131,27 +127,12 @@ function containeredeleteUrl(idString, shortURL) {
   btnYes.onclick = () => {
     sectionmodalDelete.classList.add("hidden");
     deleteURLlist(idString, shortURL)
-    
-      .then((response) => {
-        
-        setTimeout(() => {
-          
-          message("success", "Link excluído com sucesso.");
-        }, 2000);
-        
-        console.log(response);
-      })
-      .catch((error) => {
-        message("error", "Falha ao excluir link.");
-        console.log(error);
-      });
+      message("success","link foi excluido da lista")
   };
-  
-  
 
   btnNo.onclick = () => {
     sectionmodalDelete.classList.add("hidden");
   };
 
-  btnCancelmodaldelete.addEventListener("click", cancelmodalDelete); // cancelando modal editar 
+  btnCancelmodaldelete.addEventListener("click", cancelmodalDelete); // cancelando modal editar
 }

@@ -1,6 +1,3 @@
-import { message } from "../copyclipboard.js";
-
-
 
 
 export function openlinkinBrowser(shortURL) {

@@ -1,5 +1,7 @@
-import { message } from "../copyclipboard.js";
+
 import { apikey } from "../../config.js";
+import { message } from "./copyclipboard.js";
+
 import {  showingqrcode } from "./screenchange.js";
 
 

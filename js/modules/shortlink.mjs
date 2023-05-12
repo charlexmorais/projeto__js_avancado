@@ -1,4 +1,4 @@
-import { message } from "../copyclipboard.js";
+
 import { postQrcode } from "./qrcode.mjs";
 import { apikey } from "../../config.js";
 
@@ -9,6 +9,7 @@ import {
 } from "./screenchange.js";
 import { clearForm } from "./validation.js";
 import { btnQrcode } from "./constant.js";
+import {  message } from "./copyclipboard.js";
 
 export async function postDataLink() { // encurtando link 
   statusChange(); // mostrando status de carregamento
