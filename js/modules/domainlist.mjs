@@ -1,4 +1,5 @@
-import { apikey } from "../../config.js";
+import { apikey } from "./config.js";
+
 
 export function getDataDomain() { //listando dominios 
   if (!localStorage.getItem("id") || !localStorage.getItem("hostname")) {

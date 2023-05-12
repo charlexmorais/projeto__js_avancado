@@ -1,6 +1,6 @@
 
 import { postQrcode } from "./qrcode.mjs";
-import { apikey } from "../../config.js";
+
 
 import {
   showButtons,
@@ -10,6 +10,7 @@ import {
 import { clearForm } from "./validation.js";
 import { btnQrcode } from "./constant.js";
 import {  message } from "./copyclipboard.js";
+import { apikey } from "./config.js";
 
 export async function postDataLink() { // encurtando link 
   statusChange(); // mostrando status de carregamento
