@@ -4,7 +4,9 @@ import { postQrcode } from "./qrcode.mjs";
 
 import {
   showButtons,
+ 
   showingScreen,
+ 
   statusChange,
 } from "./screenchange.js";
 import { clearForm } from "./validation.js";
@@ -59,6 +61,7 @@ export async function postDataLink() { // encurtando link
       btnQrcode.onclick= ()=>postQrcode(idString)
       
     })
+ 
 
     .catch((error) => {
       if (error.response && error.response.status === 409) {

@@ -1,6 +1,7 @@
 import { apikey } from "./config.js";
 import { message } from "./copyclipboard.js";
-import { listShortLinks } from "./listaURL.js"; //importando lista listShortLinks
+import { listShortLinks } from "./lista.js";
+
 
 export function updateURL(urlOriginal, pathSlug, idString) {
   // editando url

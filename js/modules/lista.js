@@ -15,7 +15,8 @@ import { cancelmodalDelete, cancelmodalEdit } from "./validation.js";
 import { message } from "./copyclipboard.js";
 import { deleteURLlist } from "./delete.js";
 import { apikey } from "./config.js";
-[];
+
+
 export function listShortLinks() {
   // listando links curtos
   const options = {

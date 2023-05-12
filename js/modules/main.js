@@ -22,7 +22,8 @@ import {
 import { copyToClipboard } from "./copyclipboard.js";
 
 import { getDataDomain } from "./domainlist.mjs";
-import { listShortLinks } from "./listaURL.js";//import { listShortLinks } from "./listaURL.js";
+import { listShortLinks } from "./lista.js";
+
 
 import { pageInitial, showShareIcons } from "./screenchange.js";
 import {
@@ -71,7 +72,7 @@ btnlistTable.addEventListener("click", () => {
     sectionTablelink.classList.add("hidden");
   } else {
     sectionpageHome.classList.add("hidden");
-    listShortLinks(); // // listando links curtos
+    listShortLinks()
     sectionTablelink.classList.remove("hidden");
   }
 });

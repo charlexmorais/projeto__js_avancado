@@ -3,11 +3,11 @@ export function copyToClipboard(short) {
 
   navigator.clipboard.writeText(short).then(
     () => {
-      console.log(`Copiado: ${short}`);
+      (`Copiado: ${short}`);
       message("success", "Url copiada com sucesso");
     },
     (err) => {
-      console.error(`Falha na cópia: ${err}`);
+      (`Falha na cópia: ${err}`);
       message("error", "Falha na cópia");
     }
   );

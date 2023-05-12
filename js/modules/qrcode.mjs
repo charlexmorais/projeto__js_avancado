@@ -34,7 +34,7 @@ export async function postQrcode(idString) {
       }
     })
     .then((data) => {
-      console.log(data);
+   
       // criando qr code 
       const imageObjectURL = URL.createObjectURL(data);
 
