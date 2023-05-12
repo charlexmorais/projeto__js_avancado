@@ -22,7 +22,7 @@ import {
 import { copyToClipboard } from "./copyclipboard.js";
 
 import { getDataDomain } from "./domainlist.mjs";
-import { listShortLinks } from "./listaUrl.js";
+import { listShortLinks } from "./listaURL.js";//import { listShortLinks } from "./listaURL.js";
 
 import { pageInitial, showShareIcons } from "./screenchange.js";
 import {

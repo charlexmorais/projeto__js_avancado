@@ -1,24 +1,18 @@
-
 import { apikey } from "./config.js";
 import { message } from "./copyclipboard.js";
-import { listShortLinks } from "./listaUrl.js";//importando lista listShortLinks
+import { listShortLinks } from "./listaURL.js"; //importando lista listShortLinks
 
-
-
-
-
-
-
-export function updateURL(urlOriginal, pathSlug,idString) { // editando url
-  console.log(idString)
+export function updateURL(urlOriginal, pathSlug, idString) {
+  // editando url
+  console.log(idString);
   const options = {
     method: "POST",
     headers: {
       accept: "application/json",
       "content-type": "application/json",
-      Authorization:`${apikey}`,
+      Authorization: `${apikey}`,
     },
-    body: JSON.stringify({originalURL: urlOriginal, path: pathSlug})
+    body: JSON.stringify({ originalURL: urlOriginal, path: pathSlug }),
   };
   fetch(`https://api.short.io/links/${idString}`, options)
     .then((response) => {
@@ -31,8 +25,7 @@ export function updateURL(urlOriginal, pathSlug,idString) { // editando url
       }
     })
     .then((data) => {
-      listShortLinks()
-      
+      listShortLinks();
     })
     .catch((error) => {
       if (error.response && error.response.status === 409) {

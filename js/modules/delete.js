@@ -1,11 +1,10 @@
-
 import { apikey } from "./config.js";
 import { message } from "./copyclipboard.js";
-import { listShortLinks } from "./listaUrl.js";
+import { listShortLinks } from "./listaURL.js";
 
 export function deleteURLlist(idString) {
   const options = {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
       Authorization: `${apikey}`,
     },
