@@ -40,7 +40,7 @@ export function listShortLinks() {
       }
     })
     .then((data) => {
-      displayTable(data.links);
+      displayTable(data.links);// carregando lista de links 
     })
     .catch((error) => {
       if (error.response && error.response.status === 409) {

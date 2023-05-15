@@ -70,6 +70,7 @@ btnlistTable.addEventListener("click", () => {
   if (sectionpageHome.classList.contains("hidden")) {
     sectionpageHome.classList.remove("hidden");
     sectionTablelink.classList.add("hidden");
+    pageInitial()
   } else {
     sectionpageHome.classList.add("hidden");
     listShortLinks()
